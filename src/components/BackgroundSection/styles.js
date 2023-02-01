@@ -6,7 +6,6 @@ export const Container = styled.main`
   ${({ theme }) => css`
     width: 100%;
     height: 100vh;
-    position: relative;
     display: flex;
     align-items: center;
     justify-content: center;

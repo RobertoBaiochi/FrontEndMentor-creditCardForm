@@ -12,6 +12,7 @@ dist
 dist-ssr
 *.local
 frontEndMentor
+TODO.md
 
 # Editor directories and files
 .vscode/*
