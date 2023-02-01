@@ -1,25 +1,25 @@
 import styled, { css } from 'styled-components';
+import bgDesktop from '../../assets/images/bg-main-desktop.png';
+import bgMobile from '../../assets/images/bg-main-mobile.png';
 
 export const Container = styled.main`
-  ${() => css`
+  ${({ theme }) => css`
     width: 100%;
     height: 100vh;
     position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 5px solid green;
+    background-image: url(${bgMobile});
+    background-position: top;
+    background-repeat: no-repeat;
+    background-size: contain;
+
+    @media ${theme.media.mediumQueries} {
+      background-image: url(${bgDesktop});
+      background-position: left;
+      background-size: 40% 100%;
+    }
   `};
-`;
-
-export const Source = styled.source`
-  ${() => css`
-  position: absolute;
-  width: 40px;
-  `}
-`;
-
-export const Img = styled.img`
-  ${() => css`
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 40px;
-  `}
 `;
