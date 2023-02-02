@@ -6,9 +6,7 @@ export const Container = styled.main`
   ${({ theme }) => css`
     width: 100%;
     height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    margin-inline: auto;
     border: 5px solid green;
     background-image: url(${bgMobile});
     background-position: top;
