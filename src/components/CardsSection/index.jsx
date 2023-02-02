@@ -1,11 +1,11 @@
-import CardFront from '../CardFront';
-import * as Styled from './styles';
+import Cards from '../Cards';
+import { ContainerCards } from './styles';
 
 function CardsSection() {
   return (
-    <Styled.Container>
-        <CardFront />
-    </Styled.Container>
+    <ContainerCards>
+      <Cards />
+    </ContainerCards>
   );
 }
 

@@ -2,7 +2,7 @@ import styled, { css } from 'styled-components';
 import bgDesktop from '../../assets/images/bg-main-desktop.png';
 import bgMobile from '../../assets/images/bg-main-mobile.png';
 
-export const Container = styled.main`
+export const MainContainer = styled.main`
   ${({ theme }) => css`
     width: 100%;
     height: 100vh;

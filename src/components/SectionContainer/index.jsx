@@ -1,11 +1,11 @@
 import P from 'prop-types';
-import * as Styled from './styles';
+import { Container } from './styles';
 
 function SectionContainer({ children }) {
   return (
-    <Styled.Container>
+    <Container>
       {children}
-    </Styled.Container>
+    </Container>
   );
 }
 
