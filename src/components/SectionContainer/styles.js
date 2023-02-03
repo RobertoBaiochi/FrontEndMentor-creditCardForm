@@ -7,9 +7,8 @@ export const Container = styled.section`
     margin-inline: auto;
     display: grid;
     align-content: center;
-    grid-template-rows: 1fr 2fr;
-    padding: ${theme.spacings.medium} ${theme.spacings.small};
-    border: 5px solid red;
+    grid-template-rows: 1fr;
+    padding: ${theme.spacings.large};
 
     @media ${theme.media.mediumQueries} {
       grid-template-rows: none;

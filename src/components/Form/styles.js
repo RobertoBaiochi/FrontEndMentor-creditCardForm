@@ -1,8 +1,9 @@
 import styled, { css } from 'styled-components';
 
 export const FormSection = styled.form`
-  ${() => css`
+  ${({ theme }) => css`
     width: 100%;
+    margin: ${theme.spacings.medium} 0;
   `};
 `;
 
@@ -44,7 +45,7 @@ export const FormContainer = styled.div`
 export const ErrorMsg = styled.small`
   ${({ theme }) => css`
     display: block;
-    visibility: visible;
+    visibility: hidden;
     font-size: 1.3rem;
     color: ${theme.colors.redErrors};
   `};

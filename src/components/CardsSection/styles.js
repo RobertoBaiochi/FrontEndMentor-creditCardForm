@@ -3,13 +3,13 @@ import styled, { css } from 'styled-components';
 export const ContainerCards = styled.div`
   ${({ theme }) => css`
     width: 100%;
-    padding: ${theme.spacings.medium} ${theme.spacings.xsmall};
-    border: 8px solid yellow;
-    position: relative;
-    display:grid;
-    grid-template-rows: repeat(2, 1fr);
-    align-content: center;
+    height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
     margin: ${theme.spacings.medium} auto ;
+    position: relative;
 
     @media ${theme.media.mediumQueries} {
       width: 50%;

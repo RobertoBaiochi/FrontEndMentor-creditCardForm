@@ -6,7 +6,6 @@ export const MainContainer = styled.main`
   ${({ theme }) => css`
     min-height: 100vh;
     margin-inline: auto;
-    border: 5px solid black;
     background-image: url(${bgMobile});
     background-position: top;
     background-repeat: no-repeat;
