@@ -4,14 +4,17 @@ import bgMobile from '../../assets/images/bg-main-mobile.png';
 
 export const MainContainer = styled.main`
   ${({ theme }) => css`
-    width: 100%;
-    height: 100vh;
+    min-height: 100vh;
     margin-inline: auto;
-    border: 5px solid green;
+    border: 5px solid black;
     background-image: url(${bgMobile});
     background-position: top;
     background-repeat: no-repeat;
     background-size: contain;
+    background-color: ${theme.colors.white};
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
     @media ${theme.media.mediumQueries} {
       background-image: url(${bgDesktop});

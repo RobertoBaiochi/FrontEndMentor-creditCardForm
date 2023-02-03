@@ -1,11 +1,13 @@
-import BrackgroundSection from '../../components/BackgroundSection';
+import BackgroundSection from '../../components/BackgroundSection';
 import CardsSection from '../../components/CardsSection';
+import FormComponent from '../../components/Form';
 
 function App() {
   return (
-    <BrackgroundSection>
+    <BackgroundSection>
       <CardsSection />
-    </BrackgroundSection>
+      <FormComponent />
+    </BackgroundSection>
   );
 }
 
