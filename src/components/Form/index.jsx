@@ -47,7 +47,7 @@ function FormComponent() {
         <CvcContainer>
           {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
           <label htmlFor="CVC">CVC</label>
-          <input type="text" name="CVC" id="CVC" placeholder="000" />
+          <input type="text" name="CVC" id="CVC" placeholder="e.g. 123" />
           <ErrorMsg>error message</ErrorMsg>
         </CvcContainer>
       </DateCvcContainer>

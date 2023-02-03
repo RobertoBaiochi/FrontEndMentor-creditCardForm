@@ -4,7 +4,7 @@ import cardBack from '../../assets/images/bg-card-back.png';
 
 
 export const CardFrontContainer = styled.div`
-  ${() => css`
+  ${({ theme }) => css`
     width: 29rem;
     height: 17rem;
     background-image: url(${cardFront});
@@ -17,11 +17,19 @@ export const CardFrontContainer = styled.div`
     z-index: 2;
     border-radius: 1rem;
     padding: 1.5rem;
+
+    @media ${theme.media.mediumQueries} {
+      width: 33rem;
+      height: 20rem;
+      left:2rem;
+      top:2rem;
+      bottom: unset;
+    }
   `};
 `;
 
 export const CardFrontInfo = styled.div`
-  ${() => css`
+  ${({ theme }) => css`
     width: 100%;
     height: 100%;
 
@@ -37,7 +45,7 @@ export const CardFrontInfo = styled.div`
       word-spacing: .3rem;
       letter-spacing: .12rem;
       color: white;
-      margin-bottom: 1.5rem;
+      margin-bottom: 2rem;
 
     }
 
@@ -53,13 +61,27 @@ export const CardFrontInfo = styled.div`
       }
     }
 
+    @media ${theme.media.mediumQueries} {
+
+      > img {
+      margin-bottom: 5.5rem;
+    }
+
+      > h3 {
+        font-size: 2.5rem;
+        word-spacing: .1rem;
+        letter-spacing: .1rem;
+        margin-bottom: 2.5rem;
+      }
+    }
+
 
   `};
 `;
 
 
 export const CardBackContainer = styled.div`
-  ${() => css`
+  ${({ theme }) => css`
     width: 29rem;
     height: 17rem;
     background-image: url(${cardBack});
@@ -71,6 +93,14 @@ export const CardBackContainer = styled.div`
     right: 0;
     border-radius: 1rem;
     padding: 1.5rem;
+
+    @media ${theme.media.mediumQueries} {
+      width: 33rem;
+      height: 20rem;
+      right: 2rem;
+      bottom:2rem;
+      top: unset;
+    }
   `};
 `;
 

@@ -10,10 +10,14 @@ export const ContainerCards = styled.div`
     flex-direction: column;
     margin: ${theme.spacings.medium} auto ;
     position: relative;
+    border: 1px solid red;
+    padding: 2rem;
+ 
 
     @media ${theme.media.mediumQueries} {
-      width: 50%;
+      width: 100%;
       gap: 2rem;
+      height: 500px;
     }
   `};
 `;

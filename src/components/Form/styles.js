@@ -4,7 +4,18 @@ export const FormSection = styled.form`
   ${({ theme }) => css`
     width: 100%;
     margin: ${theme.spacings.medium} 0;
+    border: 1px solid green;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    @media ${theme.media.mediumQueries} {
+      padding: 2rem;
+    }
   `};
+
+
 `;
 
 export const FormContainer = styled.div`
@@ -17,7 +28,7 @@ export const FormContainer = styled.div`
       padding: ${theme.spacings.xsmall} 0;
       font-size: ${theme.font.sizes.medium};
       letter-spacing: 0.15rem;
-      
+
     }
 
     > input {
@@ -31,13 +42,13 @@ export const FormContainer = styled.div`
         outline: 2px solid ${theme.colors.darkViolet} ;
       }
 
-      &::placeholder { 
+      &::placeholder {
         font-family: ${theme.font.family.default};
         font-size: 1.8rem;
         font-weight: bold;
         color: ${theme.colors.lightViolet};
       }
-    } 
+    }
 
   `};
 `;
@@ -54,6 +65,7 @@ export const ErrorMsg = styled.small`
 export const DateCvcContainer = styled.div`
   ${() => css`
     display: flex;
+    gap: 1rem;
   `};
 `;
 
@@ -66,8 +78,8 @@ export const DateContainer = styled(FormContainer)`
       display: inline;
       width: 43%;
       margin-right: ${theme.spacings.small};
-    } 
-    
+    }
+
   `};
 `;
 
@@ -81,7 +93,7 @@ export const Button = styled.button`
  ${({ theme }) => css`
     width: 100%;
     margin-top: ${theme.spacings.small} ;
-    padding: ${theme.spacings.small};
+    padding: ${theme.spacings.medium};
     font-size: ${theme.font.sizes.medium};
     font-family: ${theme.font.family.default};
     background: ${theme.colors.darkViolet};
