@@ -9,7 +9,6 @@ export const Container = styled.section`
     align-content: center;
     grid-template-rows: repeat(2, 1fr);
     padding: ${theme.spacings.large};
-    border: 1px solid yellow;
     gap: 0;
 
     @media ${theme.media.mediumQueries} {

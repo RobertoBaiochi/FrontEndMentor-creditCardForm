@@ -42,11 +42,10 @@ export const CardFrontInfo = styled.div`
     > h3 {
       text-align: center;
       font-size: 2rem;
-      word-spacing: .3rem;
-      letter-spacing: .12rem;
+      word-spacing: .2rem;
+      letter-spacing: .1rem;
       color: white;
       margin-bottom: 2rem;
-
     }
 
     > div {

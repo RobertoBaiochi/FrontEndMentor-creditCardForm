@@ -12,7 +12,7 @@ export const ContainerCards = styled.div`
     position: relative;
     border: 1px solid red;
     padding: 2rem;
- 
+
 
     @media ${theme.media.mediumQueries} {
       width: 100%;
