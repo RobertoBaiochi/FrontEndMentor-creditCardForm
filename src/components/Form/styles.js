@@ -1,4 +1,13 @@
-import styled, { css } from 'styled-components';
+import styled, { css, keyframes } from 'styled-components';
+
+const inputAnimation = keyframes`
+  0%, 100% {
+    background-position: right;
+  }
+  50% {
+    background-position: left;
+  }
+`;
 
 export const FormSection = styled.form`
   ${({ theme }) => css`
@@ -13,8 +22,6 @@ export const FormSection = styled.form`
       padding: 2rem;
     }
   `};
-
-
 `;
 
 export const FormContainer = styled.div`
@@ -34,11 +41,22 @@ export const FormContainer = styled.div`
       display: block;
       width: 100%;
       padding: ${theme.spacings.small};
-      border: 2px solid ${theme.colors.lightViolet};
+      border: 3px solid ${theme.colors.lightViolet};
       border-radius: ${theme.spacings.xsmall};
 
+
       &:focus {
-        outline: 2px solid ${theme.colors.darkViolet} ;
+        padding: 1rem;
+        border: double 3px transparent;
+        border-radius: 6px;
+        background-image: linear-gradient( white, white),
+          linear-gradient(to right, ${theme.colors.secondaryColor}, ${theme.colors.primaryColor},
+          ${theme.colors.primaryColor}, ${theme.colors.secondaryColor});
+        background-origin: border-box;
+        background-clip: padding-box, border-box;
+        background-size: 500%;
+        animation: ${inputAnimation} 2s ease-in-out infinite;
+        outline: transparent;
       }
 
       &::placeholder {
@@ -52,10 +70,14 @@ export const FormContainer = styled.div`
   `};
 `;
 
+const isVisible = (error) => css`
+  visibility: ${!error ? 'hidden' : 'visible'};
+`;
+
 export const ErrorMsg = styled.small`
-  ${({ theme }) => css`
+  ${({ theme, error }) => css`
     display: block;
-    visibility: hidden;
+    ${isVisible(error)}
     font-size: 1.3rem;
     color: ${theme.colors.redErrors};
   `};
@@ -104,9 +126,12 @@ export const Button = styled.button`
 
     @media (hover: hover) {
       &:hover {
-        background-color: green;
+        background: linear-gradient(to right, ${theme.colors.darkViolet}, ${theme.colors.secondaryColor},
+          ${theme.colors.secondaryColor}, ${theme.colors.darkViolet});
+        background-size: 500%;
+        animation: ${inputAnimation} 6s ease-in-out infinite;
       }
+
     }
  `};
 `;
-
