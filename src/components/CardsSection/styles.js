@@ -10,7 +10,6 @@ export const ContainerCards = styled.div`
     flex-direction: column;
     margin: ${theme.spacings.medium} auto ;
     position: relative;
-    border: 1px solid red;
     padding: 2rem;
 
 

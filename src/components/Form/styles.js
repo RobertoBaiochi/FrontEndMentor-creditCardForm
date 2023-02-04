@@ -4,7 +4,6 @@ export const FormSection = styled.form`
   ${({ theme }) => css`
     width: 100%;
     margin: ${theme.spacings.medium} 0;
-    border: 1px solid green;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -101,6 +100,13 @@ export const Button = styled.button`
     border: none;
     outline-color: transparent;
     border-radius: ${theme.spacings.xsmall};
+    cursor: pointer;
+
+    @media (hover: hover) {
+      &:hover {
+        background-color: green;
+      }
+    }
  `};
 `;
 

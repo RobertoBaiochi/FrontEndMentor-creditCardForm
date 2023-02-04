@@ -17,6 +17,8 @@ export const CardFrontContainer = styled.div`
     z-index: 2;
     border-radius: 1rem;
     padding: 1.5rem;
+    -webkit-box-shadow: 0px 7px 18px 2px rgba(0,0,0,0.53);
+    box-shadow: 0px 7px 18px 2px rgba(0,0,0,0.53);
 
     @media ${theme.media.mediumQueries} {
       width: 33rem;
@@ -92,6 +94,8 @@ export const CardBackContainer = styled.div`
     right: 0;
     border-radius: 1rem;
     padding: 1.5rem;
+    -webkit-box-shadow: 0px 7px 18px 2px rgba(0,0,0,0.53);
+    box-shadow: 0px 7px 18px 2px rgba(0,0,0,0.53);
 
     @media ${theme.media.mediumQueries} {
       width: 33rem;
