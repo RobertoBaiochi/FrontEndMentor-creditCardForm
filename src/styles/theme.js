@@ -25,7 +25,7 @@ export const theme = {
   },
   media: {
     smallQueries: '(min-width: 600px)',
-    mediumQueries: '(min-width: 900px)',
+    mediumQueries: '(min-width: 913px)',
   },
   spacings: {
     xsmall: '.5rem',
