@@ -1,5 +1,9 @@
+import * as types from './types'
+
+export const teste = (dispatch) => dispatch({type});
+
 export function handleNumber(event) {
-  const cardNumberValue = event.target.value
+  const cardNumberValue = event.target.value;
 
   const cleanNumber = cardNumberValue
     .replace(/\s/g, '')
@@ -7,36 +11,36 @@ export function handleNumber(event) {
     .trim();
 
   return cleanNumber;
-};
+}
 
 export function handleName(event) {
-  const cardNameValue = event.target.value
+  const cardNameValue = event.target.value;
 
   const cleanName = cardNameValue;
 
   return cleanName;
-};
+}
 
 export function handleMouth(event) {
-  const cardMouthValue = event.target.value
+  const cardMouthValue = event.target.value;
 
   const cleanMouth = cardMouthValue;
 
   return cleanMouth;
-};
+}
 
 export function handleYear(event) {
-  const cardYearValue = event.target.value
+  const cardYearValue = event.target.value;
 
   const cleanYear = cardYearValue;
 
   return cleanYear;
-};
+}
 
 export function handleCvc(event) {
-  const cardCvcValue = event.target.value
+  const cardCvcValue = event.target.value;
 
   const cleanCvc = cardCvcValue;
 
   return cleanCvc;
-};
+}

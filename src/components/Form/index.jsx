@@ -32,7 +32,7 @@ function FormComponent() {
           name="cardName"
           id="cardName"
           placeholder="e.g. Jane Appleseed"
-          maxLength={16}
+          maxLength={25}
           value={state.name}
           onChange={(e) =>
             dispatch({ type: types.CARD_NAME, payload: handleName(e) })
