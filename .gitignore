@@ -13,6 +13,7 @@ dist-ssr
 *.local
 frontEndMentor
 TODO.md
+ANOTACOES.md
 
 # Editor directories and files
 .vscode/*

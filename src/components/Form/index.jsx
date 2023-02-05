@@ -1,12 +1,11 @@
 import { useContext } from 'react';
 import { StatesContext } from '../../context/StatesProvider/context';
-import * as types from '../../context/StatesProvider/types';
 import {
-  handleNumber,
-  handleName,
-  handleMouth,
-  handleYear,
-  handleCvc,
+  handleDispatchNumber,
+  handleDispatchName,
+  handleDispatchMouth,
+  handleDispatchYear,
+  handleDispatchCvc,
 } from '../../context/StatesProvider/actions';
 import {
   FormSection,
@@ -34,9 +33,7 @@ function FormComponent() {
           placeholder="e.g. Jane Appleseed"
           maxLength={25}
           value={state.name}
-          onChange={(e) =>
-            dispatch({ type: types.CARD_NAME, payload: handleName(e) })
-          }
+          onChange={(event) => handleDispatchName(dispatch, event)}
         />
         <ErrorMsg>error message</ErrorMsg>
       </FormContainer>
@@ -51,9 +48,7 @@ function FormComponent() {
           placeholder="e.g. 1234 5678 9123 0000"
           maxLength={19}
           value={state.number}
-          onChange={(e) =>
-            dispatch({ type: types.CARD_NUMBER, payload: handleNumber(e) })
-          }
+          onChange={(event) => handleDispatchNumber(dispatch, event)}
         />
         <ErrorMsg>error message</ErrorMsg>
       </FormContainer>
@@ -70,9 +65,7 @@ function FormComponent() {
             id="mouth"
             placeholder="MM"
             value={state.mouth}
-            onChange={(e) =>
-              dispatch({ type: types.CARD_MOUTH, payload: handleMouth(e) })
-            }
+            onChange={(event) => handleDispatchMouth(dispatch, event)}
           />
           <input
             type="text"
@@ -82,9 +75,7 @@ function FormComponent() {
             id="year"
             placeholder="YY"
             value={state.year}
-            onChange={(e) =>
-              dispatch({ type: types.CARD_YEAR, payload: handleYear(e) })
-            }
+            onChange={(event) => handleDispatchYear(dispatch, event)}
           />
           <ErrorMsg>error message</ErrorMsg>
         </DateContainer>
@@ -99,9 +90,7 @@ function FormComponent() {
             placeholder="e.g. 123"
             id="CVC"
             value={state.cvc}
-            onChange={(e) =>
-              dispatch({ type: types.CARD_CVC, payload: handleCvc(e) })
-            }
+            onChange={(event) => handleDispatchCvc(dispatch, event)}
           />
           <ErrorMsg>error message</ErrorMsg>
         </CvcContainer>

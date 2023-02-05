@@ -1,9 +1,7 @@
-import * as types from './types'
+import * as types from './types';
 
-export const teste = (dispatch) => dispatch({type});
-
-export function handleNumber(event) {
-  const cardNumberValue = event.target.value;
+function handleNumber(event) {
+  const cardNumberValue = event.target.value
 
   const cleanNumber = cardNumberValue
     .replace(/\s/g, '')
@@ -11,36 +9,57 @@ export function handleNumber(event) {
     .trim();
 
   return cleanNumber;
-}
+};
 
-export function handleName(event) {
-  const cardNameValue = event.target.value;
+function handleName(event) {
+  const cardNameValue = event.target.value
 
   const cleanName = cardNameValue;
 
   return cleanName;
-}
+};
 
-export function handleMouth(event) {
-  const cardMouthValue = event.target.value;
+function handleMouth(event) {
+  const cardMouthValue = event.target.value
 
   const cleanMouth = cardMouthValue;
 
   return cleanMouth;
-}
+};
 
-export function handleYear(event) {
-  const cardYearValue = event.target.value;
+function handleYear(event) {
+  const cardYearValue = event.target.value
 
   const cleanYear = cardYearValue;
 
   return cleanYear;
-}
+};
 
-export function handleCvc(event) {
-  const cardCvcValue = event.target.value;
+function handleCvc(event) {
+  const cardCvcValue = event.target.value
 
   const cleanCvc = cardCvcValue;
 
   return cleanCvc;
-}
+};
+
+
+export function handleDispatchNumber(dispatch, event) {
+  return dispatch({type: types.CARD_NUMBER, payload: handleNumber(event)});
+};
+
+export function handleDispatchName(dispatch, event) {
+  return dispatch({type: types.CARD_NAME, payload: handleName(event)});
+};
+
+export function handleDispatchMouth(dispatch, event) {
+  return dispatch({type: types.CARD_MOUTH, payload: handleMouth(event)});
+};
+
+export function handleDispatchYear(dispatch, event) {
+  return dispatch({type: types.CARD_YEAR, payload: handleYear(event)});
+};
+
+export function handleDispatchCvc(dispatch, event) {
+  return dispatch({type: types.CARD_CVC, payload: handleCvc(event)});
+};
