@@ -48,7 +48,7 @@ function FormComponent() {
           placeholder="e.g. 1234 5678 9123 0000"
           maxLength={19}
           value={state.number}
-          onChange={(event) => handleDispatchNumber(dispatch, event)}
+          onInput={(event) => handleDispatchNumber(dispatch, event)}
         />
         <ErrorMsg>error message</ErrorMsg>
       </FormContainer>

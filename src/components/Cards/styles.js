@@ -42,7 +42,7 @@ export const CardFrontInfo = styled.div`
     }
 
     > h3 {
-      text-align: center;
+      text-align: left;
       font-size: 2rem;
       word-spacing: .2rem;
       letter-spacing: .1rem;
@@ -53,13 +53,11 @@ export const CardFrontInfo = styled.div`
     > div {
       display: flex;
       justify-content: space-between;
+      font-size: 1.3rem;
+      color: white;
+      text-transform: uppercase;
+      letter-spacing: .1rem;
 
-      > span {
-        font-size: 1.3rem;
-        color: white;
-        text-transform: uppercase;
-        letter-spacing: .1rem;
-      }
     }
 
     @media ${theme.media.mediumQueries} {
@@ -119,6 +117,7 @@ export const CardBackInfo = styled.div`
       padding-right: 1.5rem;
       padding-bottom: 0.4rem;
       color: white;
+      font-size: 1.5rem;
 
     }
   `};

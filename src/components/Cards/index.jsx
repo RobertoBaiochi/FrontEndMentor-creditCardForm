@@ -12,13 +12,15 @@ function Cards() {
       <CardFrontContainer>
         <CardFrontInfo>
           <img src={logoCard} alt="" />
-          <h3>{(!state.number) ? '0000 0000 0000 0000' : state.number}</h3>
+          <h3>{state.number || "0000 0000 0000 0000"}</h3>
 
           <div>
             <span>{(!state.name) ? 'Jane Appleseed' : state.name}</span>
-            <span>{(!state.mouth) ? '00' : state.mouth}</span>
-            <span>/</span>
-            <span>{(!state.year) ? '00' : state.year}</span>
+            <div>
+              <span>{(!state.mouth) ? '00' : state.mouth}</span>
+              <span>/</span>
+              <span>{(!state.year) ? '00' : state.year}</span>
+            </div>
           </div>
 
         </CardFrontInfo>

@@ -40,13 +40,15 @@ export const FormContainer = styled.div`
     > input {
       display: block;
       width: 100%;
-      padding: ${theme.spacings.small};
+      padding: ${theme.spacings.xsmall};
       border: 3px solid ${theme.colors.lightViolet};
       border-radius: ${theme.spacings.xsmall};
+      font-family: ${theme.font.family.default};
+      font-size: 2rem;
 
 
       &:focus {
-        padding: 1rem;
+        padding: .5rem;
         border: double 3px transparent;
         border-radius: 6px;
         background-image: linear-gradient( white, white),
