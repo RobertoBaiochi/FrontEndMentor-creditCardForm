@@ -1,46 +1,44 @@
 export function handleNumber(event) {
-  const cardNumberValue = event.target.value
+  const inputValue = event.target.value;
+  const teste = inputValue.replace(/([^\d])+/gim, '');
+  const letras = /[a-zA-Z\u00C0-\u00FF]+/i;
+  const barril = inputValue.match(letras);
 
-  const cleanNumber = cardNumberValue
-    .replace(/\s/g, '')
-    .replace(/(\d{4})/g, '$1 ')
-    .trim();
-
-  if (Number.isNaN(+cleanNumber)) {
-    event.
+  if (barril) {
+    console.log('Aqui a gente lança o erro Erro');
   }
 
-  return cleanNumber;
-};
+  return teste.replace(/(\d{4})/g, '$1 ').trim();;
+}
 
 export function handleName(event) {
-  const cardNameValue = event.target.value
+  const cardNameValue = event.target.value;
 
   const cleanName = cardNameValue;
 
   return cleanName;
-};
+}
 
 export function handleMouth(event) {
-  const cardMouthValue = event.target.value
+  const cardMouthValue = event.target.value;
 
   const cleanMouth = cardMouthValue;
 
   return cleanMouth;
-};
+}
 
 export function handleYear(event) {
-  const cardYearValue = event.target.value
+  const cardYearValue = event.target.value;
 
   const cleanYear = cardYearValue;
 
   return cleanYear;
-};
+}
 
 export function handleCvc(event) {
-  const cardCvcValue = event.target.value
+  const cardCvcValue = event.target.value;
 
   const cleanCvc = cardCvcValue;
 
   return cleanCvc;
-};
+}
