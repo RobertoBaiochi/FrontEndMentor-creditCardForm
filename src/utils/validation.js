@@ -1,7 +1,7 @@
 export function handleNumber(event) {
   const inputValue = event.target.value;
   const teste = inputValue.replace(/([^\d])+/gim, '');
-  const letras = /[a-zA-Z\u00C0-\u00FF]+/i;
+  const letras = /[a-zA-Z\u00C0-\u00FF ]+/i;
   const barril = inputValue.match(letras);
 
   if (barril) {
@@ -13,10 +13,14 @@ export function handleNumber(event) {
 
 export function handleName(event) {
   const cardNameValue = event.target.value;
+  const treta = cardNameValue.replace(/[0-9]/g, '')
+  const teste = cardNameValue.replace(/([^\d])+/gim, '')
 
-  const cleanName = cardNameValue;
+  if(teste) {
+    console.log('outro erro aqui')
+  }
 
-  return cleanName;
+  return treta;
 }
 
 export function handleMouth(event) {
