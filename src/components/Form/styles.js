@@ -9,6 +9,19 @@ const inputAnimation = keyframes`
   }
 `;
 
+const inputInvallid = keyframes`
+  25% {
+    translate: 8px 0;
+  }
+  50% {
+    translate: -16px 0;
+  }
+  75% {
+    translate: 8px 0;
+  }
+
+`
+
 export const FormSection = styled.form`
   ${({ theme }) => css`
     width: 100%;
@@ -45,6 +58,7 @@ export const FormContainer = styled.div`
       border-radius: ${theme.spacings.xsmall};
       font-family: ${theme.font.family.default};
       font-size: 2rem;
+      text-transform: capitalize;
 
 
       &:focus {
@@ -67,22 +81,28 @@ export const FormContainer = styled.div`
         font-weight: bold;
         color: ${theme.colors.lightViolet};
       }
+
     }
 
-  `};
-`;
+    .erro {
+        border: solid 3px red;
+        animation: ${inputInvallid} 200ms ease-in-out;
+      }
 
-const isVisible = (error) => css`
-  visibility: ${!error ? 'hidden' : 'visible'};
+  `};
 `;
 
 export const ErrorMsg = styled.small`
-  ${({ theme, error }) => css`
+  ${({ theme }) => css`
     display: block;
-    ${isVisible(error)}
+    visibility: hidden;
     font-size: 1.3rem;
     color: ${theme.colors.redErrors};
   `};
+
+  &.erromsg {
+    visibility: visible;
+  }
 `;
 
 export const DateCvcContainer = styled.div`

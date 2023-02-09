@@ -1,12 +1,6 @@
 import { useContext } from 'react';
 import { StatesContext } from '../../context/StatesProvider/context';
-import {
-  handleDispatchNumber,
-  handleDispatchName,
-  handleDispatchMouth,
-  handleDispatchYear,
-  handleDispatchCvc,
-} from '../../context/StatesProvider/actions';
+import * as types from '../../context/StatesProvider/types';
 import {
   FormSection,
   FormContainer,
@@ -21,6 +15,147 @@ function FormComponent() {
   const statesContext = useContext(StatesContext);
   const { state, dispatch } = statesContext;
 
+  const inputAction = (event) => {
+    const {name, value} = event.target
+
+    if(name === 'cardName') {
+
+      const cardNameValue = value;
+      const charError = event.target.classList;
+      const errormsg = event.target.nextSibling;
+
+      charError.remove('erro')
+      errormsg.classList.remove('erromsg')
+
+      const treta = cardNameValue.replace(/[0-9]/g, '');
+      /* substitui numeros por espaço vazio */
+      const teste = cardNameValue.replace(/([^\d])+/gim, '');
+      /* substitui letras por espaço vazio */
+
+      if (teste) {
+        event.target.blur()
+        charError.add('erro')
+        errormsg.classList.add('erromsg')
+      }
+
+
+      return dispatch({
+        type: 'update',
+        payload: { key: name, value: treta },
+      });
+    }
+
+    if (name === 'cardNumber') {
+      const inputValue = value;
+      const teste = inputValue.replace(/([^\d])+/gim, '');
+      const barril = inputValue.match(/[a-z]/gi);
+      const charError = event.target.classList;
+      const errormsg = event.target.nextSibling;
+
+      charError.remove('erro')
+      errormsg.classList.remove('erromsg')
+
+      if (barril) {
+        console.log(barril)
+        console.log('erro')
+        event.target.blur()
+        charError.add('erro')
+        errormsg.classList.add('erromsg')
+      }
+
+      const alo = teste.replace(/(\d{4})/g, '$1 ').trim();
+
+
+      return dispatch({
+        type: 'update',
+        payload: { key: name, value: alo },
+      });
+    }
+
+    if (name === 'cardMouth') {
+      const inputValue = value;
+      const teste = inputValue.replace(/([^\d])+/gim, '');
+      const barril = inputValue.match(/[a-z]/gi);
+      const charError = event.target.classList;
+      const errormsg = event.target.nextSibling;
+
+      charError.remove('erro')
+      errormsg.classList.remove('erromsg')
+
+      const alo = teste.replace(/(\d{4})/g, '$1 ').trim();
+      const aloNumber = Number(alo)
+
+      if (barril) {
+        console.log(barril)
+        console.log('erro')
+        event.target.blur()
+        charError.add('erro')
+        errormsg.classList.add('erromsg')
+      }
+
+      if (aloNumber > 12) return dispatch({
+        type: 'update',
+        payload: { key: name, value: 12 },
+      })
+
+      if (aloNumber < 10 && aloNumber > 1) return dispatch({
+        type: 'update',
+        payload: { key: name, value: `0${aloNumber}` },
+      })
+
+      return dispatch({
+        type: 'update',
+        payload: { key: name, value: aloNumber },
+      });
+    }
+
+    if (name === 'cardYear') {
+      const inputValue = value;
+      const teste = inputValue.replace(/([^\d])+/gim, '');
+      const barril = inputValue.match(/[a-z]/gi);
+      const charError = event.target.classList;
+      const errormsg = event.target.nextSibling;
+
+      charError.remove('erro')
+      errormsg.classList.remove('erromsg')
+
+      const alo = teste.replace(/(\d{4})/g, '$1 ').trim();
+      const aloNumber = Number(alo)
+
+      if (barril || aloNumber < 1 ) {
+        console.log(barril)
+        console.log('erro')
+        event.target.blur()
+        charError.add('erro')
+        errormsg.classList.add('erromsg')
+      }
+
+      if (aloNumber > 12) return dispatch({
+        type: 'update',
+        payload: { key: name, value: 12 },
+      })
+
+      if (aloNumber < 10 && aloNumber > 1) return dispatch({
+        type: 'update',
+        payload: { key: name, value: `0${aloNumber}` },
+      })
+
+      return dispatch({
+        type: 'update',
+        payload: { key: name, value: aloNumber },
+      });
+    }
+
+
+    // dispatch({
+    //   type: 'update',
+    //   payload: { key: name, value: value },
+    // });
+
+    console.log(name, value)
+
+  };
+
   return (
     <FormSection>
       <FormContainer>
@@ -31,11 +166,11 @@ function FormComponent() {
           name="cardName"
           id="cardName"
           placeholder="e.g. Jane Appleseed"
-          maxLength={25}
-          value={state.name}
-          onChange={(event) => handleDispatchName(dispatch, event)}
+          maxLength={20}
+          value={state.cardName}
+          onChange={inputAction}
         />
-        <ErrorMsg>error message</ErrorMsg>
+        <ErrorMsg className=''>Wrong format, letters only</ErrorMsg>
       </FormContainer>
 
       <FormContainer>
@@ -47,8 +182,8 @@ function FormComponent() {
           id="cardNumber"
           placeholder="e.g. 1234 5678 9123 0000"
           maxLength={19}
-          value={state.number}
-          onInput={(event) => handleDispatchNumber(dispatch, event)}
+          value={state.cardNumber}
+          onInput={inputAction}
         />
         <ErrorMsg>error message</ErrorMsg>
       </FormContainer>
@@ -60,22 +195,20 @@ function FormComponent() {
           <input
             type="text"
             maxLength={2}
-            max={12}
-            name="mouth"
-            id="mouth"
+            name="cardMouth"
+            id="cardMouth"
             placeholder="MM"
-            value={state.mouth}
-            onChange={(event) => handleDispatchMouth(dispatch, event)}
+            value={state.cardMouth}
+            onChange={inputAction}
           />
           <input
             type="text"
             maxLength={2}
-            max={12}
-            name="year"
-            id="year"
+            name="cardYear"
+            id="cardYear"
             placeholder="YY"
-            value={state.year}
-            onChange={(event) => handleDispatchYear(dispatch, event)}
+            value={state.cardYear}
+            onChange={inputAction}
           />
           <ErrorMsg>error message</ErrorMsg>
         </DateContainer>
@@ -90,7 +223,9 @@ function FormComponent() {
             placeholder="e.g. 123"
             id="CVC"
             value={state.cvc}
-            onChange={(event) => handleDispatchCvc(dispatch, event)}
+            onChange={(event) =>
+              dispatch({ type: types.CARD_CVC, payload: handleCvc(event) })
+            }
           />
           <ErrorMsg>error message</ErrorMsg>
         </CvcContainer>

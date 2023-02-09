@@ -1,9 +1,7 @@
 export const data = {
-  number: '',
-  name: '',
-  mouth: '',
-  year: '',
+  cardNumber: '',
+  cardName: '',
+  cardMouth: '',
+  cardYear: '',
   cvc: '',
-  error: false,
-  isSuccess: false,
 };
