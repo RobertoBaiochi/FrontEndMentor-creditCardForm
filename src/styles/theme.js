@@ -7,7 +7,6 @@ export const theme = {
     mediumViolet: 'hsl(279, 6%, 55%)',
     darkViolet: 'hsl(278, 68%, 11%)',
     redErrors: 'hsl(0, 100%, 66%)',
-    disabled: 'hsl(178, 38%, 51%)',
   },
   font: {
     family: {

@@ -150,8 +150,6 @@ function FormComponent() {
       });
     }
 
-    console.log(value);
-
     return dispatchFormValidationData({
       type: types.CARD_MOUTH_SUCCESS,
       payload: true,
@@ -173,8 +171,8 @@ function FormComponent() {
     const valueInNumber = Number(value);
     const yearFormatAdjustment = `${'0'}${value}`;
 
-    const currentYear = new Date().toLocaleDateString(); // submit
-    const sliceYearFormatYY = currentYear.slice(-2); // submit
+    const currentYear = new Date().toLocaleDateString();
+    const sliceYearFormatYY = currentYear.slice(-2);
 
     if (value.length === 1) {
       return dispatchFormData({
@@ -184,8 +182,10 @@ function FormComponent() {
     }
 
     if (valueInNumber < sliceYearFormatYY) {
-      // submit
-      console.log('erro para submit');
+      return dispatchFormValidationData({
+        type: types.CARD_YEAR_SUCCESS,
+        payload: false,
+      });
     }
 
     if (value.length === 0) {
@@ -238,7 +238,10 @@ function FormComponent() {
 
   const HandleSubmit = (event) => {
     event.preventDefault();
-    
+
+    console.log('submit',formData)
+    console.log('useEffect', formValidationData);
+
   };
 
   const isAvailable = () => {
