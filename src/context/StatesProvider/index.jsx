@@ -1,13 +1,28 @@
 import P from 'prop-types';
 import { useMemo, useReducer } from 'react';
 import { StatesContext } from './context';
-import { data } from './data';
-import { reducer } from './reducer';
+import { initialState, initialValidityState } from './data';
+import { formOnChangeReducer, formOnBlurReducer } from './reducer';
 
 export function StatesProvider({ children }) {
-  const [state, dispatch] = useReducer(reducer, data);
+  const [formData, dispatchFormData] = useReducer(
+    formOnChangeReducer,
+    initialState,
+  );
+  const [formValidatyData, dispatchformValidatyData] = useReducer(
+    formOnBlurReducer,
+    initialValidityState,
+  );
 
-  const contextProviderValue = useMemo(() => ({ state, dispatch }), [state, dispatch]);
+  const contextProviderValue = useMemo(
+    () => ({
+      formData,
+      formValidatyData,
+      dispatchFormData,
+      dispatchformValidatyData,
+    }),
+    [formData, formValidatyData, dispatchFormData, dispatchformValidatyData],
+  );
   return (
     <StatesContext.Provider value={contextProviderValue}>
       {children}

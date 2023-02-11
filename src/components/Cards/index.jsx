@@ -6,20 +6,20 @@ import { StatesContext } from '../../context/StatesProvider/context';
 // !state.number || state.number.length === 0 ? "0000 0000 0000 0000" : state.number
 function Cards() {
   const statesContext = useContext(StatesContext);
-  const {state} = statesContext
+  const {formData} = statesContext
   return (
     <>
       <CardFrontContainer>
         <CardFrontInfo>
           <img src={logoCard} alt="" />
-          <h3>{state.cardNumber.length === 0 ? "0000 0000 0000 0000" : state.cardNumber}</h3>
+          <h3>{formData.cardNumber.length === 0 ? "0000 0000 0000 0000" : formData.cardNumber}</h3>
 
           <div>
-            <span>{(!state.cardName) ? 'Jane Appleseed' : state.cardName}</span>
+            <span>{(!formData.cardName) ? 'Jane Appleseed' : formData.cardName}</span>
             <div>
-              <span>{(!state.cardMouth) ? '00' : state.cardMouth}</span>
+              <span>{(!formData.cardMouth) ? '00' : formData.cardMouth}</span>
               <span>/</span>
-              <span>{(!state.year) ? '00' : state.year}</span>
+              <span>{(!formData.cardYear) ? '00' : formData.cardYear}</span>
             </div>
           </div>
 
@@ -28,7 +28,7 @@ function Cards() {
 
       <CardBackContainer>
         <CardBackInfo>
-          <span>{(!state.cvc) ? '000' : state.cvc}</span>
+          <span>{(!formData.cardCvc) ? '000' : formData.cardCvc}</span>
         </CardBackInfo>
       </CardBackContainer>
     </>

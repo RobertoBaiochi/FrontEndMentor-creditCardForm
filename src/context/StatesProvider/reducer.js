@@ -1,43 +1,35 @@
 import * as types from './types';
 
-// export const reducer = (state, action) => {
-//   switch (action.type) {
-//     case types.CARD_NUMBER: {
-//       return { ...state, number: action.payload };
-//     }
-//     case types.CARD_NAME: {
-//       return { ...state, name: action.payload };
-//     }
-//     case types.CARD_MOUTH: {
-//       return { ...state, mouth: action.payload };
-//     }
-//     case types.CARD_YEAR: {
-//       return { ...state, year: action.payload };
-//     }
-//     case types.CARD_CVC: {
-//       return { ...state, cvc: action.payload };
-//     }
-//     default: {
-//       return { ...state };
-//     }
-//   }
-// };
-export const reducer = (state, action) => {
+export const formOnChangeReducer = (state, action) => {
   switch (action.type) {
     case 'update': {
-      return { ...state, [action.payload.key]: action.payload.value };
+      return {
+        ...state,
+        [action.payload.key]: action.payload.value,
+      };
+    }
+    default: {
+      return { ...state };
+    }
+  }
+};
+
+export const formOnBlurReducer = (state, action) => {
+  switch (action.type) {
+    case types.CARD_NUMBER: {
+      return { ...state, cardNumberError: action.payload };
     }
     case types.CARD_NAME: {
-      return { ...state, name: action.payload };
+      return { ...state, cardNameError: true };
     }
     case types.CARD_MOUTH: {
-      return { ...state, mouth: action.payload };
+      return { ...state, cardMouthError: action.payload };
     }
     case types.CARD_YEAR: {
-      return { ...state, year: action.payload };
+      return { ...state, cardYearError: action.payload };
     }
     case types.CARD_CVC: {
-      return { ...state, cvc: action.payload };
+      return { ...state, cardCvcError: action.payload };
     }
     default: {
       return { ...state };

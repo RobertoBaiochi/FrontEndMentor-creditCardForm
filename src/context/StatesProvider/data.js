@@ -1,7 +1,15 @@
-export const data = {
+export const initialState = {
   cardNumber: '',
   cardName: '',
   cardMouth: '',
   cardYear: '',
-  cvc: '',
+  cardCvc: '',
 };
+
+export const initialValidityState = {
+  cardNumberError: false,
+  cardNameError: false,
+  cardMouthError: false,
+  cardYearError: false,
+  cardCvcError: false,
+}
