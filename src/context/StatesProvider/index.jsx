@@ -9,7 +9,7 @@ export function StatesProvider({ children }) {
     formOnChangeReducer,
     initialState,
   );
-  const [formValidatyData, dispatchformValidatyData] = useReducer(
+  const [formValidationData, dispatchFormValidationData] = useReducer(
     formOnBlurReducer,
     initialValidityState,
   );
@@ -17,11 +17,11 @@ export function StatesProvider({ children }) {
   const contextProviderValue = useMemo(
     () => ({
       formData,
-      formValidatyData,
+      formValidationData,
       dispatchFormData,
-      dispatchformValidatyData,
+      dispatchFormValidationData,
     }),
-    [formData, formValidatyData, dispatchFormData, dispatchformValidatyData],
+    [formData, formValidationData, dispatchFormData, dispatchFormValidationData],
   );
   return (
     <StatesContext.Provider value={contextProviderValue}>

@@ -16,14 +16,16 @@ function FormComponent() {
   const {
     formData,
     dispatchFormData,
-    formValidatyData,
-    dispatchformValidatyData,
+    formValidationData,
+    dispatchFormValidationData,
   } = statesContext;
 
-  const handleInputOnChange = (event) => {
-    dispatchFormData({
-      type: 'update',
-      payload: { key: event.target.name, value: event.target.value },
+  const handleOnChangeName = (event) => {
+    const { value } = event.target;
+
+    return dispatchFormData({
+      type: types.CARD_NAME,
+      payload: value,
     });
   };
 
@@ -33,33 +35,46 @@ function FormComponent() {
     const containNumber = /[0-9]/g.test(cardNameValue);
 
     if (containNumber === true) {
-      return dispatchformValidatyData(
-        {
-          type: types.CARD_NAME,
-          payload: {
-            cardNameError: true,
-          },
-        },
-        console.log(
-          'payload dentro do if',
-          formValidatyData,
-          containNumber,
-          formData,
-        ),
-      );
+      return dispatchFormValidationData({
+        type: types.CARD_NAME_ERROR,
+        payload: true,
+      });
     }
 
-    return console.log('fora do if', formValidatyData);
-    // dispatchformValidatyData(
-    //   { type: types.CARD_NAME },
-    //   console.log('payload final da função', formValidatyData, containNumber),
-    // );
+    return dispatchFormValidationData({
+      type: types.CARD_NAME,
+      payload: false,
+    });
   };
+
+  const handleOnChangeNumber = (event) => {
+    const { value } = event.target;
+    const cardNumberValue = value.replace(/([^\d])+/gim, '');
+    const formatedNumberValue = cardNumberValue.replace(/(\d{4})/g, '$1 ').trim();
+
+    console.log(formatedNumberValue)
+
+    return dispatchFormData({
+      type: types.CARD_NUMBER,
+      payload: formatedNumberValue,
+    })
+  };
+
+  const handleOnBlurNumber = (event) => {
+    const { value } = event.target;
+    const cardNumberValue = value;
+
+    if (cardNumberValue.length < 19) {
+      console.log('deu erro');
+    }
+
+    console.log(cardNumberValue);
+    return cardNumberValue;
+  };
+
   useEffect(() => {
-    console.log('useEffect', formValidatyData)
-
-  }, [formValidatyData])
-
+    console.log('useEffect', formValidationData);
+  }, [formValidationData]);
 
   // if (name === 'cardName') {
   //
@@ -222,7 +237,7 @@ function FormComponent() {
           placeholder="e.g. Jane Appleseed"
           maxLength={20}
           value={formData.cardName}
-          onChange={handleInputOnChange}
+          onChange={handleOnChangeName}
           onBlur={handleOnBlurName}
         />
         <ErrorMsg className="">Wrong format, letters only</ErrorMsg>
@@ -238,7 +253,9 @@ function FormComponent() {
           placeholder="e.g. 1234 5678 9123 0000"
           maxLength={19}
           value={formData.cardNumber}
-          onInput={handleInputOnChange}
+          onInput={handleOnChangeNumber}
+          onBlur={handleOnBlurNumber}
+          pattern="[0-9 ]+"
         />
         <ErrorMsg>error message</ErrorMsg>
       </FormContainer>
@@ -254,7 +271,7 @@ function FormComponent() {
             id="cardMouth"
             placeholder="MM"
             value={formData.cardMouth}
-            onChange={handleInputOnChange}
+            onChange={handleOnChangeName}
           />
           <input
             type="text"
@@ -263,7 +280,7 @@ function FormComponent() {
             id="cardYear"
             placeholder="YY"
             value={formData.cardYear}
-            onChange={handleInputOnChange}
+            onChange={handleOnChangeName}
           />
           <ErrorMsg>error message</ErrorMsg>
         </DateContainer>
@@ -278,7 +295,7 @@ function FormComponent() {
             placeholder="e.g. 123"
             id="cardCvc"
             value={formData.cardCvc}
-            onChange={handleInputOnChange}
+            onChange={handleOnChangeName}
           />
           <ErrorMsg>error message</ErrorMsg>
         </CvcContainer>

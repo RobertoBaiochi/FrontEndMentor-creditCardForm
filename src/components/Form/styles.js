@@ -9,7 +9,7 @@ const inputAnimation = keyframes`
   }
 `;
 
-const inputInvallid = keyframes`
+const inputInvalid = keyframes`
   25% {
     translate: 8px 0;
   }
@@ -86,7 +86,7 @@ export const FormContainer = styled.div`
 
     .erro {
         border: solid 3px red;
-        animation: ${inputInvallid} 200ms ease-in-out;
+        animation: ${inputInvalid} 200ms ease-in-out;
       }
 
   `};
