@@ -22,15 +22,11 @@ function FormComponent() {
 
   const handleOnChangeName = (event) => {
     const { value } = event.target;
-
-    if(value.length >= 20) {
-      event.stopPropagation();
-      console.log("entrou aqui")
-    }
+    const valueMax = value.maxLength(20)
 
     return dispatchFormData({
       type: types.CARD_NAME,
-      payload: value,
+      payload: valueMax,
     });
   };
 
