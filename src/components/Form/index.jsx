@@ -23,6 +23,11 @@ function FormComponent() {
   const handleOnChangeName = (event) => {
     const { value } = event.target;
 
+    if(value.length >= 20) {
+      event.stopPropagation();
+      console.log("entrou aqui")
+    }
+
     return dispatchFormData({
       type: types.CARD_NAME,
       payload: value,
