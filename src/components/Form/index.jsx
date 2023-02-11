@@ -21,12 +21,14 @@ function FormComponent() {
   } = statesContext;
 
   const handleOnChangeName = (event) => {
+    const teste = event.target
+    teste.maxLength = 20;
+
     const { value } = event.target;
-    const valueMax = value.maxLength(20)
 
     return dispatchFormData({
       type: types.CARD_NAME,
-      payload: valueMax,
+      payload: value,
     });
   };
 
