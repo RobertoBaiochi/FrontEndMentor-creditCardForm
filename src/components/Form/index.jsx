@@ -34,127 +34,166 @@ function FormComponent() {
     const cardNameValue = value;
     const containNumber = /[0-9]/g.test(cardNameValue);
 
-    if (containNumber === true) {
+    if (containNumber) {
       return dispatchFormValidationData({
-        type: types.CARD_NAME_ERROR,
-        payload: true,
+        type: types.CARD_NAME_SUCCESS,
+        payload: false,
+      });
+    }
+
+    if (cardNameValue.length === 0) {
+      return dispatchFormValidationData({
+        type: types.CARD_NAME_SUCCESS,
+        payload: null,
       });
     }
 
     return dispatchFormValidationData({
-      type: types.CARD_NAME,
-      payload: false,
+      type: types.CARD_NAME_SUCCESS,
+      payload: true,
     });
   };
 
   const handleOnChangeNumber = (event) => {
     const { value } = event.target;
     const cardNumberValue = value.replace(/([^\d])+/gim, '');
-    const formatedNumberValue = cardNumberValue.replace(/(\d{4})/g, '$1 ').trim();
-
-    console.log(formatedNumberValue)
+    const formattedNumberValue = cardNumberValue
+      .replace(/(\d{4})/g, '$1 ')
+      .trim();
 
     return dispatchFormData({
       type: types.CARD_NUMBER,
-      payload: formatedNumberValue,
-    })
+      payload: formattedNumberValue,
+    });
   };
 
   const handleOnBlurNumber = (event) => {
     const { value } = event.target;
     const cardNumberValue = value;
 
-    if (cardNumberValue.length < 19) {
-      console.log('deu erro');
+    if (cardNumberValue.length === 0) {
+      return dispatchFormValidationData({
+        type: types.CARD_NUMBER_SUCCESS,
+        payload: null,
+      });
     }
 
-    console.log(cardNumberValue);
-    return cardNumberValue;
+    if (cardNumberValue.length < 19) {
+      return dispatchFormValidationData({
+        type: types.CARD_NUMBER_SUCCESS,
+        payload: false,
+      });
+    }
+
+    return dispatchFormValidationData({
+      type: types.CARD_NUMBER_SUCCESS,
+      payload: true,
+    });
+  };
+
+  const handleOnChangeMouth = (event) => {
+    const { value } = event.target;
+    const formattedMouthValue = value.replace(/([^\d])+/gim, '').trim();
+    const mouthValueInNumber = Number(formattedMouthValue);
+
+    if (mouthValueInNumber > 12) {
+      return dispatchFormData({
+        type: types.CARD_MOUTH,
+        payload: 12,
+      });
+    }
+
+    return dispatchFormData({
+      type: types.CARD_MOUTH,
+      payload: formattedMouthValue,
+    });
+  };
+
+  const handleOnBlurMouth = (event) => {
+    const { value } = event.target;
+    const valueInNumber = Number(value);
+    const mouthFormatAdjustment = `${'0'}${value}`;
+
+    if (value.length === 1) {
+      dispatchFormData({
+        type: types.CARD_MOUTH,
+        payload: mouthFormatAdjustment,
+      });
+    }
+
+    if (valueInNumber === 0) {
+      dispatchFormData({
+        type: types.CARD_MOUTH,
+        payload: String(''),
+      });
+
+      return dispatchFormValidationData({
+        type: types.CARD_MOUTH_SUCCESS,
+        payload: null,
+      });
+    }
+
+    if (value.length === 0 || value === '') {
+      return dispatchFormValidationData({
+        type: types.CARD_MOUTH_SUCCESS,
+        payload: null,
+      });
+    }
+
+    console.log(value);
+
+    return dispatchFormValidationData({
+      type: types.CARD_MOUTH_SUCCESS,
+      payload: true,
+    });
+  };
+
+  const handleOnChangeYear = (event) => {
+    const { value } = event.target;
+    const formattedYearValue = value.replace(/([^\d])+/gim, '').trim();
+
+    return dispatchFormData({
+      type: types.CARD_YEAR,
+      payload: formattedYearValue,
+    });
+  };
+
+  const handleOnBlurYear = (event) => {
+    const { value } = event.target;
+    const valueInNumber = Number(value);
+    const yearFormatAdjustment = `${'0'}${value}`;
+
+    const currentYear = new Date().toLocaleDateString(); // submit
+    const sliceYearFormatYY = currentYear.slice(-2); // submit
+
+    if (value.length === 1) {
+      return dispatchFormData({
+        type: types.CARD_YEAR,
+        payload: yearFormatAdjustment,
+      });
+    }
+
+    if (valueInNumber < sliceYearFormatYY) {
+      // submit
+      console.log('erro para submit');
+    }
+
+    if (value.length === 0) {
+      return dispatchFormValidationData({
+        type: types.CARD_YEAR_SUCCESS,
+        payload: null,
+      });
+    }
+
+    return dispatchFormValidationData({
+      type: types.CARD_YEAR_SUCCESS,
+      payload: true,
+    });
   };
 
   useEffect(() => {
     console.log('useEffect', formValidationData);
   }, [formValidationData]);
-
-  // if (name === 'cardName') {
-  //
-  //   const treta = cardNameValue.match(/[0-9]/g);
-  //   /* substitui numeros por espaço vazio */
-  //   // const teste = cardNameValue.match(/([^\d])+/gim);
-  //   /* substitui letras por espaço vazio */
-
-  //   if (treta) {
-  //     console.log(treta)
-  //     return dispatchformValidatyData({type: types.CARD_NAME, payLoad: formData})
-
-  //   }
-
-  //   return dispatchformValidatyData({type: types.CARD_NAME, payLoad: formData});
-  // }
-
-  // if (name === 'cardNumber') {
-  //   const inputValue = value;
-  //   const teste = inputValue.replace(/([^\d])+/gim, '');
-  //   const barril = inputValue.match(/[a-z]/gi);
-  //   const charError = event.target.classList;
-  //   const errormsg = event.target.nextSibling;
-
-  //   charError.remove('erro');
-  //   errormsg.classList.remove('erromsg');
-
-  //   if (barril) {
-  //     event.target.blur();
-  //     charError.add('erro');
-  //     errormsg.classList.add('erromsg');
-  //   }
-
-  //   const alo = teste.replace(/(\d{4})/g, '$1 ').trim();
-
-  //   return (
-  //     dispatch({
-  //       type: 'update',
-  //       payload: { key: name, value: alo, correctCardNumber: true },
-  //     }),
-  //     console.log(state.correctCardNumber)
-  //   );
-  // }
-
-  // if (name === 'cardMouth') {
-  //   const inputValue = value;
-  //   const teste = inputValue.replace(/([^\d])+/gim, '');
-  //   const barril = inputValue.match(/[a-z]/gi);
-  //   const charError = event.target.classList;
-  //   const errormsg = event.target.nextSibling;
-
-  //   charError.remove('erro');
-  //   errormsg.classList.remove('erromsg');
-
-  //   const alo = teste.trim();
-  //   const aloNumber = Number(alo);
-
-  //   if (barril) {
-  //     event.target.blur();
-  //     charError.add('erro');
-  //     errormsg.classList.add('erromsg');
-  //   }
-
-  //   if (aloNumber > 12)
-  //     return dispatch({
-  //       type: 'update',
-  //       payload: { key: name, value: 12 },
-  //     });
-
-  //   if (aloNumber < 10 && aloNumber > 1)
-  //     return dispatch({
-  //       type: 'update',
-  //       payload: { key: name, value: `0${aloNumber}` },
-  //     });
-
-  //   return dispatch({
-  //     type: 'update',
-  //     payload: { key: name, value: aloNumber },
-  //   });
-  // }
 
   // if (name === 'cardYear') {
   //   const inputValue = value;
@@ -255,7 +294,6 @@ function FormComponent() {
           value={formData.cardNumber}
           onInput={handleOnChangeNumber}
           onBlur={handleOnBlurNumber}
-          pattern="[0-9 ]+"
         />
         <ErrorMsg>error message</ErrorMsg>
       </FormContainer>
@@ -271,7 +309,8 @@ function FormComponent() {
             id="cardMouth"
             placeholder="MM"
             value={formData.cardMouth}
-            onChange={handleOnChangeName}
+            onChange={handleOnChangeMouth}
+            onBlur={handleOnBlurMouth}
           />
           <input
             type="text"
@@ -280,7 +319,8 @@ function FormComponent() {
             id="cardYear"
             placeholder="YY"
             value={formData.cardYear}
-            onChange={handleOnChangeName}
+            onChange={handleOnChangeYear}
+            onBlur={handleOnBlurYear}
           />
           <ErrorMsg>error message</ErrorMsg>
         </DateContainer>

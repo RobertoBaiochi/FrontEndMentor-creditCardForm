@@ -16,11 +16,11 @@ import * as types from './types';
 
 export const formOnChangeReducer = (state, action) => {
   switch (action.type) {
-    case types.CARD_NUMBER: {
-      return { ...state, cardNumber: action.payload };
-    }
     case types.CARD_NAME: {
       return { ...state, cardName: action.payload };
+    }
+    case types.CARD_NUMBER: {
+      return { ...state, cardNumber: action.payload };
     }
     case types.CARD_MOUTH: {
       return { ...state, cardMouth: action.payload };
@@ -39,20 +39,20 @@ export const formOnChangeReducer = (state, action) => {
 
 export const formOnBlurReducer = (state, action) => {
   switch (action.type) {
-    case types.CARD_NUMBER_ERROR: {
-      return { ...state, cardNumberError: action.payload };
+    case types.CARD_NAME_SUCCESS: {
+      return { ...state, cardNameSuccess: action.payload };
     }
-    case types.CARD_NAME_ERROR: {
-      return { ...state, cardNameError: action.payload };
+    case types.CARD_NUMBER_SUCCESS: {
+      return { ...state, cardNumberSuccess: action.payload };
     }
-    case types.CARD_MOUTH_ERROR: {
-      return { ...state, cardMouthError: action.payload };
+    case types.CARD_MOUTH_SUCCESS: {
+      return { ...state, cardMouthSuccess: action.payload };
     }
-    case types.CARD_YEAR_ERROR: {
-      return { ...state, cardYearError: action.payload };
+    case types.CARD_YEAR_SUCCESS: {
+      return { ...state, cardYearSuccess: action.payload };
     }
-    case types.CARD_CVC_ERROR: {
-      return { ...state, cardCvcError: action.payload };
+    case types.CARD_CVC_SUCCESS: {
+      return { ...state, cardCvcSuccess: action.payload };
     }
     default: {
       return { ...state };

@@ -1,15 +1,15 @@
 export const initialState = {
-  cardNumber: '',
   cardName: '',
+  cardNumber: '',
   cardMouth: '',
   cardYear: '',
   cardCvc: '',
 };
 
-export const initialValidityState = {
-  cardNumberError: false,
-  cardNameError: false,
-  cardMouthError: false,
-  cardYearError: false,
-  cardCvcError: false,
+export const initialValidationState = {
+  cardNameSuccess: null,
+  cardNumberSuccess: null,
+  cardMouthSuccess: null,
+  cardYearSuccess: null,
+  cardCvcSuccess: null,
 }
