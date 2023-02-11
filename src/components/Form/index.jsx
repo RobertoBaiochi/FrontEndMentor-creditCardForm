@@ -191,70 +191,41 @@ function FormComponent() {
     });
   };
 
-  useEffect(() => {
-    console.log('useEffect', formValidationData);
-  }, [formValidationData]);
+  const handleOnChangeCvc = (event) => {
+    const { value } = event.target;
+    const formattedCvcValue = value.replace(/([^\d])+/gim, '').trim();
 
-  // if (name === 'cardYear') {
-  //   const inputValue = value;
-  //   const teste = inputValue.replace(/([^\d])+/gim, '');
-  //   const barril = inputValue.match(/[a-z]/gi);
-  //   const charError = event.target.classList;
-  //   const errormsg = event.target.nextSibling;
-  //   const currentYear = new Date().toLocaleDateString();
-  //   const sliceYearYY = currentYear.slice(-2);
-  //   console.log(currentYear.slice(-2));
+    return dispatchFormData({
+      type: types.CARD_CVC,
+      payload: formattedCvcValue,
+    });
+  };
 
-  //   charError.remove('erro');
-  //   errormsg.classList.remove('erromsg');
+  const handleOnBlurChangeCvc = (event) => {
+    const { value } = event.target;
 
-  //   const alo = teste.trim();
-  //   const aloNumber = Number(alo);
+    if (value.length === 0) {
+      console.log('erro do brabo')
+      return dispatchFormValidationData({
+        type: types.CARD_CVC_SUCCESS,
+        payload: null,
+      });
+    }
 
-  //   if (barril) {
-  //     event.target.blur();
-  //     charError.add('erro');
-  //     errormsg.classList.add('erromsg');
-  //   }
+    if (value.length < 3) {
+      console.log('erro do brabo')
+      return dispatchFormValidationData({
+        type: types.CARD_CVC_SUCCESS,
+        payload: false,
+      });
+    }
 
-  //   if (aloNumber < sliceYearYY) {
-  //     console.log('erro para submit');
-  //   }
+    return dispatchFormValidationData({
+      type: types.CARD_CVC_SUCCESS,
+      payload: true,
+    });
 
-  //   return dispatch({
-  //     type: 'update',
-  //     payload: { key: name, value: alo },
-  //   });
-  // }
-
-  // if (name === 'cardCvc') {
-  //   const inputValue = value;
-  //   const teste = inputValue.replace(/([^\d])+/gim, '');
-  //   const barril = inputValue.match(/[a-z]/gi);
-  //   const charError = event.target.classList;
-  //   const errormsg = event.target.nextSibling;
-
-  //   charError.remove('erro');
-  //   errormsg.classList.remove('erromsg');
-
-  //   const alo = teste.trim();
-
-  //   if (barril) {
-  //     event.target.blur();
-  //     charError.add('erro');
-  //     errormsg.classList.add('erromsg');
-  //   }
-
-  //   return dispatch({
-  //     type: 'update',
-  //     payload: { key: name, value: alo },
-  //   });
-  // }
-
-  // return dispatch({
-  //   type: 'update',
-  //   payload: { key: name, value },
-  // });
+  }
 
   const HandleSubmit = (event) => {
     event.preventDefault();
@@ -263,6 +234,10 @@ function FormComponent() {
       console.log('cardName', formData.cardName);
     }
   };
+
+  useEffect(() => {
+    console.log('useEffect', formValidationData);
+  }, [formValidationData]);
 
   return (
     <FormSection>
@@ -335,13 +310,14 @@ function FormComponent() {
             placeholder="e.g. 123"
             id="cardCvc"
             value={formData.cardCvc}
-            onChange={handleOnChangeName}
+            onChange={handleOnChangeCvc}
+            onBlur={handleOnBlurChangeCvc}
           />
           <ErrorMsg>error message</ErrorMsg>
         </CvcContainer>
       </DateCvcContainer>
 
-      <Button type="submit" onSubmit={HandleSubmit}>
+      <Button type="submit" onClick={HandleSubmit}>
         Confirm
       </Button>
     </FormSection>
