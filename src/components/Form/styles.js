@@ -146,6 +146,17 @@ export const Button = styled.button`
     border-radius: ${theme.spacings.xsmall};
     cursor: pointer;
 
+    &:disabled {
+      background: ${theme.colors.mediumViolet};
+
+      @media (hover: hover) {
+        &:hover {
+          background: ${theme.colors.mediumViolet};
+          cursor: not-allowed;
+        }
+      }
+    }
+
     @media (hover: hover) {
       &:hover {
         background: linear-gradient(to right, ${theme.colors.darkViolet}, ${theme.colors.secondaryColor},
@@ -153,7 +164,6 @@ export const Button = styled.button`
         background-size: 500%;
         animation: ${inputAnimation} 6s ease-in-out infinite;
       }
-
     }
  `};
 `;

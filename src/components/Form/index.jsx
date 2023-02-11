@@ -48,6 +48,16 @@ function FormComponent() {
       });
     }
 
+    if (formData.cardName) {
+      const fullName = formData.cardName.split(' ');
+      if (!fullName[1]) {
+        return dispatchFormValidationData({
+          type: types.CARD_NAME_SUCCESS,
+          payload: false,
+        });
+      }
+    }
+
     return dispatchFormValidationData({
       type: types.CARD_NAME_SUCCESS,
       payload: true,
@@ -205,7 +215,7 @@ function FormComponent() {
     const { value } = event.target;
 
     if (value.length === 0) {
-      console.log('erro do brabo')
+      console.log('erro do brabo');
       return dispatchFormValidationData({
         type: types.CARD_CVC_SUCCESS,
         payload: null,
@@ -213,7 +223,7 @@ function FormComponent() {
     }
 
     if (value.length < 3) {
-      console.log('erro do brabo')
+      console.log('erro do brabo');
       return dispatchFormValidationData({
         type: types.CARD_CVC_SUCCESS,
         payload: false,
@@ -224,18 +234,24 @@ function FormComponent() {
       type: types.CARD_CVC_SUCCESS,
       payload: true,
     });
-
-  }
+  };
 
   const HandleSubmit = (event) => {
     event.preventDefault();
-
-    if (formData.cardName.length > 10) {
-      console.log('cardName', formData.cardName);
-    }
+    
   };
 
+  const isAvailable = () => {
+    const isTrue = (current) => current === true;
+    const valuesFormSuccess = Object.values(formValidationData);
+    const isAllSuccess = valuesFormSuccess.every(isTrue);
+
+    return isAllSuccess
+  }
+
+
   useEffect(() => {
+    isAvailable()
     console.log('useEffect', formValidationData);
   }, [formValidationData]);
 
@@ -317,7 +333,7 @@ function FormComponent() {
         </CvcContainer>
       </DateCvcContainer>
 
-      <Button type="submit" onClick={HandleSubmit}>
+      <Button disabled={ !isAvailable() } type="submit" onClick={HandleSubmit}>
         Confirm
       </Button>
     </FormSection>
