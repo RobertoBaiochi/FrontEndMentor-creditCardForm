@@ -13,3 +13,10 @@ export const initialValidationState = {
   cardYearSuccess: null,
   cardCvcSuccess: null,
 }
+
+export const initialErrorMsgState = {
+  cardNameErrorMsg: '',
+  cardNumberErrorMsg: '',
+  cardDateErrorMsg: '',
+  cardCvcErrorMsg: '',
+}

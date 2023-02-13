@@ -95,14 +95,9 @@ export const FormContainer = styled.div`
 export const ErrorMsg = styled.small`
   ${({ theme }) => css`
     display: block;
-    visibility: hidden;
     font-size: 1.3rem;
     color: ${theme.colors.redErrors};
   `};
-
-  &.erromsg {
-    visibility: visible;
-  }
 `;
 
 export const DateCvcContainer = styled.div`

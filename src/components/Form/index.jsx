@@ -15,15 +15,14 @@ function FormComponent() {
   const statesContext = useContext(StatesContext);
   const {
     formData,
-    dispatchFormData,
     formValidationData,
+    formErrorMsg,
+    dispatchFormData,
     dispatchFormValidationData,
+    dispatchErrorMsg,
   } = statesContext;
 
   const handleOnChangeName = (event) => {
-    const teste = event.target
-    teste.maxLength = 20;
-
     const { value } = event.target;
 
     return dispatchFormData({
@@ -38,33 +37,57 @@ function FormComponent() {
     const containNumber = /[0-9]/g.test(cardNameValue);
 
     if (containNumber) {
-      return dispatchFormValidationData({
-        type: types.CARD_NAME_SUCCESS,
-        payload: false,
-      });
+      return (
+        dispatchFormValidationData({
+          type: types.CARD_NAME_SUCCESS,
+          payload: false,
+        }),
+        dispatchErrorMsg({
+          type: types.CARD_NAME_ERROR,
+          error: 'Tem número',
+        })
+      );
     }
 
     if (cardNameValue.length === 0) {
-      return dispatchFormValidationData({
-        type: types.CARD_NAME_SUCCESS,
-        payload: null,
-      });
+      return (
+        dispatchFormValidationData({
+          type: types.CARD_NAME_SUCCESS,
+          payload: null,
+        }),
+        dispatchErrorMsg({
+          type: types.CARD_NAME_ERROR,
+          error: '',
+        })
+      );
     }
 
     if (formData.cardName) {
       const fullName = formData.cardName.split(' ');
       if (!fullName[1]) {
-        return dispatchFormValidationData({
-          type: types.CARD_NAME_SUCCESS,
-          payload: false,
-        });
+        return (
+          dispatchFormValidationData({
+            type: types.CARD_NAME_SUCCESS,
+            payload: false,
+          }),
+          dispatchErrorMsg({
+            type: types.CARD_NAME_ERROR,
+            error: 'Faltou Sobrenome',
+          })
+        );
       }
     }
 
-    return dispatchFormValidationData({
-      type: types.CARD_NAME_SUCCESS,
-      payload: true,
-    });
+    return (
+      dispatchFormValidationData({
+        type: types.CARD_NAME_SUCCESS,
+        payload: true,
+      }),
+      dispatchErrorMsg({
+        type: types.CARD_NAME_ERROR,
+        error: '',
+      })
+    );
   };
 
   const handleOnChangeNumber = (event) => {
@@ -85,23 +108,41 @@ function FormComponent() {
     const cardNumberValue = value;
 
     if (cardNumberValue.length === 0) {
-      return dispatchFormValidationData({
-        type: types.CARD_NUMBER_SUCCESS,
-        payload: null,
-      });
+      return (
+        dispatchFormValidationData({
+          type: types.CARD_NUMBER_SUCCESS,
+          payload: null,
+        }),
+        dispatchErrorMsg({
+          type: types.CARD_NUMBER_ERROR,
+          error: '',
+        })
+      );
     }
 
     if (cardNumberValue.length < 19) {
-      return dispatchFormValidationData({
-        type: types.CARD_NUMBER_SUCCESS,
-        payload: false,
-      });
+      return (
+        dispatchFormValidationData({
+          type: types.CARD_NUMBER_SUCCESS,
+          payload: false,
+        }),
+        dispatchErrorMsg({
+          type: types.CARD_NUMBER_ERROR,
+          error: 'Faltando numero de cartão',
+        })
+      );
     }
 
-    return dispatchFormValidationData({
-      type: types.CARD_NUMBER_SUCCESS,
-      payload: true,
-    });
+    return (
+      dispatchFormValidationData({
+        type: types.CARD_NUMBER_SUCCESS,
+        payload: true,
+      }),
+      dispatchErrorMsg({
+        type: types.CARD_NUMBER_ERROR,
+        error: '',
+      })
+    );
   };
 
   const handleOnChangeMouth = (event) => {
@@ -127,6 +168,8 @@ function FormComponent() {
     const valueInNumber = Number(value);
     const mouthFormatAdjustment = `${'0'}${value}`;
 
+
+
     if (value.length === 1) {
       dispatchFormData({
         type: types.CARD_MOUTH,
@@ -140,17 +183,29 @@ function FormComponent() {
         payload: String(''),
       });
 
-      return dispatchFormValidationData({
-        type: types.CARD_MOUTH_SUCCESS,
-        payload: null,
-      });
+      return (
+          dispatchFormValidationData({
+          type: types.CARD_MOUTH_SUCCESS,
+          payload: null,
+        }),
+        dispatchErrorMsg({
+          type: types.CARD_DATE_ERROR,
+          error: '',
+        })
+      );
     }
 
     if (value.length === 0 || value === '') {
-      return dispatchFormValidationData({
-        type: types.CARD_MOUTH_SUCCESS,
-        payload: null,
-      });
+      return (
+        dispatchFormValidationData({
+          type: types.CARD_MOUTH_SUCCESS,
+          payload: null,
+        }),
+        dispatchErrorMsg({
+          type: types.CARD_DATE_ERROR,
+          error: '',
+        })
+      );
     }
 
     return dispatchFormValidationData({
@@ -177,31 +232,65 @@ function FormComponent() {
     const currentYear = new Date().toLocaleDateString();
     const sliceYearFormatYY = currentYear.slice(-2);
 
+    if (value.length === 0) {
+      return (
+        dispatchFormValidationData({
+          type: types.CARD_YEAR_SUCCESS,
+          payload: null,
+        }),
+        dispatchErrorMsg({
+          type: types.CARD_DATE_ERROR,
+          error: '',
+        })
+      );
+    }
+
     if (value.length === 1) {
-      return dispatchFormData({
+      dispatchFormData({
         type: types.CARD_YEAR,
         payload: yearFormatAdjustment,
       });
     }
 
-    if (valueInNumber < sliceYearFormatYY) {
-      return dispatchFormValidationData({
-        type: types.CARD_YEAR_SUCCESS,
-        payload: false,
-      });
+    if (formData.cardMouth.length === 0 ) {
+      return (
+        dispatchFormValidationData({
+          type: types.CARD_YEAR_SUCCESS,
+          payload: null,
+        }),
+        dispatchErrorMsg({
+          type: types.CARD_DATE_ERROR,
+          error: 'Mês é necessário',
+        })
+      );
     }
 
-    if (value.length === 0) {
-      return dispatchFormValidationData({
-        type: types.CARD_YEAR_SUCCESS,
-        payload: null,
-      });
+    if (
+      valueInNumber < sliceYearFormatYY ||
+      Number(yearFormatAdjustment) < sliceYearFormatYY
+    ) {
+      return (
+        dispatchFormValidationData({
+          type: types.CARD_YEAR_SUCCESS,
+          payload: false,
+        }),
+        dispatchErrorMsg({
+          type: types.CARD_DATE_ERROR,
+          error: 'Cartão expirou',
+        })
+      );
     }
 
-    return dispatchFormValidationData({
-      type: types.CARD_YEAR_SUCCESS,
-      payload: true,
-    });
+    return (
+      dispatchFormValidationData({
+        type: types.CARD_YEAR_SUCCESS,
+        payload: true,
+      }),
+      dispatchErrorMsg({
+        type: types.CARD_DATE_ERROR,
+        error: '',
+      })
+    );
   };
 
   const handleOnChangeCvc = (event) => {
@@ -218,33 +307,48 @@ function FormComponent() {
     const { value } = event.target;
 
     if (value.length === 0) {
-      console.log('erro do brabo');
-      return dispatchFormValidationData({
-        type: types.CARD_CVC_SUCCESS,
-        payload: null,
-      });
+      return (
+        dispatchFormValidationData({
+          type: types.CARD_CVC_SUCCESS,
+          payload: null,
+        }),
+        dispatchErrorMsg({
+          type: types.CARD_CVC_ERROR,
+          error: '',
+        })
+      );
     }
 
     if (value.length < 3) {
-      console.log('erro do brabo');
-      return dispatchFormValidationData({
-        type: types.CARD_CVC_SUCCESS,
-        payload: false,
-      });
+      return (
+        dispatchFormValidationData({
+          type: types.CARD_CVC_SUCCESS,
+          payload: false,
+        }),
+        dispatchErrorMsg({
+          type: types.CARD_CVC_ERROR,
+          error: 'Cvc menor que 3',
+        })
+      );
     }
 
-    return dispatchFormValidationData({
-      type: types.CARD_CVC_SUCCESS,
-      payload: true,
-    });
+    return (
+      dispatchFormValidationData({
+        type: types.CARD_CVC_SUCCESS,
+        payload: true,
+      }),
+      dispatchErrorMsg({
+        type: types.CARD_CVC_ERROR,
+        error: '',
+      })
+    );
   };
 
   const HandleSubmit = (event) => {
     event.preventDefault();
 
-    console.log('submit',formData)
+    console.log('submit', formData);
     console.log('useEffect', formValidationData);
-
   };
 
   const isAvailable = () => {
@@ -252,14 +356,14 @@ function FormComponent() {
     const valuesFormSuccess = Object.values(formValidationData);
     const isAllSuccess = valuesFormSuccess.every(isTrue);
 
-    return isAllSuccess
-  }
-
+    return isAllSuccess;
+  };
 
   useEffect(() => {
-    isAvailable()
+    isAvailable();
     console.log('useEffect', formValidationData);
-  }, [formValidationData]);
+    console.log('useEffect', formErrorMsg);
+  }, [formValidationData, formErrorMsg]);
 
   return (
     <FormSection>
@@ -275,8 +379,14 @@ function FormComponent() {
           value={formData.cardName}
           onChange={handleOnChangeName}
           onBlur={handleOnBlurName}
+          className={
+            formValidationData.cardNameSuccess ||
+            formValidationData.cardNameSuccess === null
+              ? ''
+              : 'erro'
+          }
         />
-        <ErrorMsg className="">Wrong format, letters only</ErrorMsg>
+        <ErrorMsg>{formErrorMsg.cardNameErrorMsg}</ErrorMsg>
       </FormContainer>
 
       <FormContainer>
@@ -291,8 +401,14 @@ function FormComponent() {
           value={formData.cardNumber}
           onInput={handleOnChangeNumber}
           onBlur={handleOnBlurNumber}
+          className={
+            formValidationData.cardNumberSuccess ||
+            formValidationData.cardNumberSuccess === null
+              ? ''
+              : 'erro'
+          }
         />
-        <ErrorMsg>error message</ErrorMsg>
+        <ErrorMsg>{formErrorMsg.cardNumberErrorMsg}</ErrorMsg>
       </FormContainer>
 
       <DateCvcContainer>
@@ -308,6 +424,12 @@ function FormComponent() {
             value={formData.cardMouth}
             onChange={handleOnChangeMouth}
             onBlur={handleOnBlurMouth}
+            className={
+              formValidationData.cardMouthSuccess ||
+              formValidationData.cardMouthSuccess === null
+                ? ''
+                : 'erro'
+            }
           />
           <input
             type="text"
@@ -318,8 +440,14 @@ function FormComponent() {
             value={formData.cardYear}
             onChange={handleOnChangeYear}
             onBlur={handleOnBlurYear}
+            className={
+              formValidationData.cardYearSuccess ||
+              formValidationData.cardYearSuccess === null
+                ? ''
+                : 'erro'
+            }
           />
-          <ErrorMsg>error message</ErrorMsg>
+          <ErrorMsg>{formErrorMsg.cardDateErrorMsg}</ErrorMsg>
         </DateContainer>
 
         <CvcContainer>
@@ -334,12 +462,18 @@ function FormComponent() {
             value={formData.cardCvc}
             onChange={handleOnChangeCvc}
             onBlur={handleOnBlurChangeCvc}
+            className={
+              formValidationData.cardCvcSuccess ||
+              formValidationData.cardCvcSuccess === null
+                ? ''
+                : 'erro'
+            }
           />
-          <ErrorMsg>error message</ErrorMsg>
+          <ErrorMsg>{formErrorMsg.cardCvcErrorMsg}</ErrorMsg>
         </CvcContainer>
       </DateCvcContainer>
 
-      <Button disabled={ !isAvailable() } type="submit" onClick={HandleSubmit}>
+      <Button disabled={!isAvailable()} type="submit" onClick={HandleSubmit}>
         Confirm
       </Button>
     </FormSection>
