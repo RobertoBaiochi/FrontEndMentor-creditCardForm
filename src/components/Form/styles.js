@@ -60,7 +60,7 @@ export const FormContainer = styled.div`
       font-family: ${theme.font.family.default};
       font-size: 2rem;
       text-transform: capitalize;
-      margin-bottom: 1rem;
+      margin-bottom: 1.5rem;
 
 
       &:focus {

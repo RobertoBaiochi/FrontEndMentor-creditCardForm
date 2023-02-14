@@ -44,7 +44,7 @@ function FormComponent() {
         }),
         dispatchErrorMsg({
           type: types.CARD_NAME_ERROR,
-          error: 'Tem número',
+          error: 'Wrong format, letters only.',
         })
       );
     }
@@ -72,7 +72,7 @@ function FormComponent() {
           }),
           dispatchErrorMsg({
             type: types.CARD_NAME_ERROR,
-            error: 'Faltou Sobrenome',
+            error: 'Required first and last name.',
           })
         );
       }
@@ -128,7 +128,7 @@ function FormComponent() {
         }),
         dispatchErrorMsg({
           type: types.CARD_NUMBER_ERROR,
-          error: 'Faltando numero de cartão',
+          error: 'Missing numbers.',
         })
       );
     }
@@ -271,7 +271,7 @@ function FormComponent() {
         }),
         dispatchErrorMsg({
           type: types.CARD_DATE_ERROR,
-          error: 'Mês é necessário',
+          error: 'The month is required.',
         })
       );
     }
@@ -287,7 +287,7 @@ function FormComponent() {
         }),
         dispatchErrorMsg({
           type: types.CARD_DATE_ERROR,
-          error: 'Cartão expirou',
+          error: 'This card is expired.',
         })
       );
     }
@@ -338,7 +338,7 @@ function FormComponent() {
         }),
         dispatchErrorMsg({
           type: types.CARD_CVC_ERROR,
-          error: 'Cvc menor que 3',
+          error: 'Missing numbers.',
         })
       );
     }
