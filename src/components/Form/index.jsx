@@ -23,17 +23,18 @@ function FormComponent() {
   } = statesContext;
 
   const handleOnChangeName = (event) => {
-    const { value } = event.target;
+    const { value, maxLength } = event.target;
+    const valueMaxLength = value.slice(0, maxLength)
 
     return dispatchFormData({
       type: types.CARD_NAME,
-      payload: value,
+      payload: valueMaxLength,
     });
   };
 
   const handleOnBlurName = (event) => {
-    const { value, maxLength } = event.target;
-    const cardNameValue = value.slice(0, maxLength);
+    const { value } = event.target;
+    const cardNameValue = value
     const containNumber = /[0-9]/g.test(cardNameValue);
 
     if (containNumber) {
@@ -91,15 +92,16 @@ function FormComponent() {
   };
 
   const handleOnChangeNumber = (event) => {
-    const { value } = event.target;
-    const cardNumberValue = value.replace(/([^\d])+/gim, '');
+    const { value, maxLength } = event.target;
+    const cardNumberValue = value.replace(/([^\d])+/gim, '')
     const formattedNumberValue = cardNumberValue
       .replace(/(\d{4})/g, '$1 ')
       .trim();
+    const valueMaxLength = formattedNumberValue.slice(0, maxLength)
 
     return dispatchFormData({
       type: types.CARD_NUMBER,
-      payload: formattedNumberValue,
+      payload: valueMaxLength,
     });
   };
 
@@ -146,9 +148,10 @@ function FormComponent() {
   };
 
   const handleOnChangeMouth = (event) => {
-    const { value } = event.target;
+    const { value, maxLength } = event.target;
     const formattedMouthValue = value.replace(/([^\d])+/gim, '').trim();
-    const mouthValueInNumber = Number(formattedMouthValue);
+    const valueMaxLength = formattedMouthValue.slice(0, maxLength)
+    const mouthValueInNumber = Number(valueMaxLength);
 
     if (mouthValueInNumber > 12) {
       return dispatchFormData({
@@ -159,7 +162,7 @@ function FormComponent() {
 
     return dispatchFormData({
       type: types.CARD_MOUTH,
-      payload: formattedMouthValue,
+      payload: valueMaxLength,
     });
   };
 
@@ -226,8 +229,9 @@ function FormComponent() {
   };
 
   const handleOnChangeYear = (event) => {
-    const { value } = event.target;
-    const formattedYearValue = value.replace(/([^\d])+/gim, '').trim();
+    const { value, maxLength } = event.target;
+    const valueMaxLength = value.slice(0, maxLength)
+    const formattedYearValue = valueMaxLength.replace(/([^\d])+/gim, '').trim();
 
     return dispatchFormData({
       type: types.CARD_YEAR,
@@ -305,8 +309,9 @@ function FormComponent() {
   };
 
   const handleOnChangeCvc = (event) => {
-    const { value } = event.target;
-    const formattedCvcValue = value.replace(/([^\d])+/gim, '').trim();
+    const { value, maxLength } = event.target;
+    const valueMaxLength = value.slice(0, maxLength)
+    const formattedCvcValue = valueMaxLength.replace(/([^\d])+/gim, '').trim();
 
     return dispatchFormData({
       type: types.CARD_CVC,
