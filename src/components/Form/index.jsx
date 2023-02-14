@@ -32,8 +32,8 @@ function FormComponent() {
   };
 
   const handleOnBlurName = (event) => {
-    const { value } = event.target;
-    const cardNameValue = value;
+    const { value, maxLength } = event.target;
+    const cardNameValue = value.slice(0, maxLength);
     const containNumber = /[0-9]/g.test(cardNameValue);
 
     if (containNumber) {
@@ -355,6 +355,11 @@ function FormComponent() {
     );
   };
 
+  useEffect(() => {
+    console.log('useEffect', formValidationData);
+    console.log('useEffect', formErrorMsg);
+  }, [formValidationData, formErrorMsg]);
+
   const HandleSubmit = (event) => {
     event.preventDefault();
 
@@ -370,12 +375,6 @@ function FormComponent() {
     return isAllSuccess;
   };
 
-  useEffect(() => {
-    isAvailable();
-    console.log('useEffect', formValidationData);
-    console.log('useEffect', formErrorMsg);
-  }, [formValidationData, formErrorMsg]);
-
   return (
     <FormSection>
       <FormContainer>
@@ -386,8 +385,7 @@ function FormComponent() {
           name="cardName"
           id="cardName"
           placeholder="e.g. Jane Appleseed"
-          maxLength={20}
-          value={formData.cardName}
+          maxLength="20"          value={formData.cardName}
           onChange={handleOnChangeName}
           onBlur={handleOnBlurName}
           className={
