@@ -168,8 +168,6 @@ function FormComponent() {
     const valueInNumber = Number(value);
     const mouthFormatAdjustment = `${'0'}${value}`;
 
-
-
     if (value.length === 1) {
       dispatchFormData({
         type: types.CARD_MOUTH,
@@ -184,7 +182,7 @@ function FormComponent() {
       });
 
       return (
-          dispatchFormValidationData({
+        dispatchFormValidationData({
           type: types.CARD_MOUTH_SUCCESS,
           payload: null,
         }),
@@ -200,6 +198,19 @@ function FormComponent() {
         dispatchFormValidationData({
           type: types.CARD_MOUTH_SUCCESS,
           payload: null,
+        }),
+        dispatchErrorMsg({
+          type: types.CARD_DATE_ERROR,
+          error: '',
+        })
+      );
+    }
+
+    if (value.length >= 1) {
+      return (
+        dispatchFormValidationData({
+          type: types.CARD_MOUTH_SUCCESS,
+          payload: true,
         }),
         dispatchErrorMsg({
           type: types.CARD_DATE_ERROR,
@@ -252,11 +263,11 @@ function FormComponent() {
       });
     }
 
-    if (formData.cardMouth.length === 0 ) {
+    if (formData.cardMouth.length === 0) {
       return (
         dispatchFormValidationData({
-          type: types.CARD_YEAR_SUCCESS,
-          payload: null,
+          type: types.CARD_MOUTH_SUCCESS,
+          payload: false,
         }),
         dispatchErrorMsg({
           type: types.CARD_DATE_ERROR,

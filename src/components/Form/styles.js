@@ -40,6 +40,7 @@ export const FormSection = styled.form`
 export const FormContainer = styled.div`
   ${({ theme }) => css`
     width: 100%;
+    position: relative;
 
     > label {
       display: block;
@@ -59,6 +60,7 @@ export const FormContainer = styled.div`
       font-family: ${theme.font.family.default};
       font-size: 2rem;
       text-transform: capitalize;
+      margin-bottom: 1rem;
 
 
       &:focus {
@@ -97,6 +99,10 @@ export const ErrorMsg = styled.small`
     display: block;
     font-size: 1.3rem;
     color: ${theme.colors.redErrors};
+
+    position: absolute;
+    left: 0;
+    bottom: -.5rem;
   `};
 `;
 
