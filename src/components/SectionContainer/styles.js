@@ -9,6 +9,7 @@ export const Container = styled.section`
     align-content: center;
     grid-template-rows: repeat(2, 1fr);
     padding: ${theme.spacings.large};
+    border: 1px solid brown;
 
     @media ${theme.media.smallQueries} {
       width: 60rem;

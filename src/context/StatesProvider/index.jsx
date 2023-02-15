@@ -1,8 +1,16 @@
 import P from 'prop-types';
-import { useMemo, useReducer } from 'react';
+import { useMemo, useReducer, useState } from 'react';
 import { StatesContext } from './context';
-import { initialState, initialValidationState, initialErrorMsgState } from './data';
-import { formOnChangeReducer, formOnBlurReducer, errorMsgReducer } from './reducer';
+import {
+  initialState,
+  initialValidationState,
+  initialErrorMsgState,
+} from './data';
+import {
+  formOnChangeReducer,
+  formOnBlurReducer,
+  errorMsgReducer,
+} from './reducer';
 
 export function StatesProvider({ children }) {
   const [formData, dispatchFormData] = useReducer(
@@ -15,19 +23,32 @@ export function StatesProvider({ children }) {
   );
   const [formErrorMsg, dispatchErrorMsg] = useReducer(
     errorMsgReducer,
-    initialErrorMsgState
+    initialErrorMsgState,
   );
+
+  const [isSubmitted, setIsSubmitted] = useState(false);
 
   const contextProviderValue = useMemo(
     () => ({
       formData,
       formValidationData,
       formErrorMsg,
+      isSubmitted,
       dispatchFormData,
       dispatchFormValidationData,
       dispatchErrorMsg,
+      setIsSubmitted,
     }),
-    [formData, formValidationData, formErrorMsg, dispatchFormData, dispatchFormValidationData, dispatchErrorMsg],
+    [
+      formData,
+      formValidationData,
+      formErrorMsg,
+      isSubmitted,
+      dispatchFormData,
+      dispatchFormValidationData,
+      dispatchErrorMsg,
+      setIsSubmitted,
+    ],
   );
   return (
     <StatesContext.Provider value={contextProviderValue}>

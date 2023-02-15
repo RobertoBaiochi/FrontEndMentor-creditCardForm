@@ -1,23 +1,18 @@
 import styled, { css } from 'styled-components';
 
-export const ContainerCards = styled.div`
+export const FormContainer = styled.section`
   ${({ theme }) => css`
     width: 100%;
-    height: 300px;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    border: 1px solid red;
     margin: ${theme.spacings.medium} auto;
-    position: relative;
     padding: 2rem;
-    border: 1px solid crimson;
-
 
     @media ${theme.media.mediumQueries} {
-      width: 100%;
-      gap: 2rem;
-      height: 500px;
+      padding: 2rem;
     }
   `};
 `;

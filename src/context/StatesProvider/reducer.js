@@ -54,9 +54,6 @@ export const errorMsgReducer = (state, action) => {
     case types.CARD_NUMBER_ERROR: {
       return { ...state, cardNumberErrorMsg: action.error };
     }
-    // case types.CARD_MOUTH_ERROR: {
-    //   return { ...state, cardMouthERROR: action.error };
-    // }
     case types.CARD_DATE_ERROR: {
       return { ...state, cardDateErrorMsg: action.error };
     }

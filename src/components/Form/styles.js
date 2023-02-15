@@ -23,17 +23,13 @@ const inputInvalid = keyframes`
 `
 
 export const FormSection = styled.form`
-  ${({ theme }) => css`
+  ${() => css`
     width: 100%;
-    margin: ${theme.spacings.medium} 0;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
 
-    @media ${theme.media.mediumQueries} {
-      padding: 2rem;
-    }
   `};
 `;
 
@@ -46,8 +42,12 @@ export const FormContainer = styled.div`
       display: block;
       text-transform: uppercase;
       padding: ${theme.spacings.xsmall} 0;
-      font-size: ${theme.font.sizes.medium};
+      font-size: ${theme.font.sizes.small};
       letter-spacing: 0.15rem;
+
+      @media ${theme.media.smallQueries} {
+        font-size: ${theme.font.sizes.medium};
+      }
 
     }
 
@@ -102,7 +102,7 @@ export const ErrorMsg = styled.small`
 
     position: absolute;
     left: 0;
-    bottom: -.5rem;
+    bottom: 0;
   `};
 `;
 
@@ -115,7 +115,6 @@ export const DateCvcContainer = styled.div`
 
 export const DateContainer = styled(FormContainer)`
   ${({ theme }) => css`
-
     width: 50%;
 
     > input {
@@ -131,40 +130,4 @@ export const CvcContainer = styled(FormContainer)`
   ${() => css`
     width: 50%;
   `};
-`;
-
-export const Button = styled.button`
- ${({ theme }) => css`
-    width: 100%;
-    margin-top: ${theme.spacings.small} ;
-    padding: ${theme.spacings.medium};
-    font-size: ${theme.font.sizes.medium};
-    font-family: ${theme.font.family.default};
-    background: ${theme.colors.darkViolet};
-    color: ${theme.colors.white};
-    border: none;
-    outline-color: transparent;
-    border-radius: ${theme.spacings.xsmall};
-    cursor: pointer;
-
-    &:disabled {
-      background: ${theme.colors.mediumViolet};
-
-      @media (hover: hover) {
-        &:hover {
-          background: ${theme.colors.mediumViolet};
-          cursor: not-allowed;
-        }
-      }
-    }
-
-    @media (hover: hover) {
-      &:hover {
-        background: linear-gradient(to right, ${theme.colors.darkViolet}, ${theme.colors.secondaryColor},
-          ${theme.colors.secondaryColor}, ${theme.colors.darkViolet});
-        background-size: 500%;
-        animation: ${inputAnimation} 6s ease-in-out infinite;
-      }
-    }
- `};
 `;

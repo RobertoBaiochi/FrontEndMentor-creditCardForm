@@ -7,9 +7,9 @@ import {
   DateCvcContainer,
   DateContainer,
   CvcContainer,
-  Button,
 } from './styles';
 import * as types from '../../context/StatesProvider/types';
+import { ButtonStyle } from '../Button/styles';
 
 function FormComponent() {
   const statesContext = useContext(StatesContext);
@@ -17,14 +17,16 @@ function FormComponent() {
     formData,
     formValidationData,
     formErrorMsg,
+    isSubmitted,
     dispatchFormData,
     dispatchFormValidationData,
     dispatchErrorMsg,
+    setIsSubmitted,
   } = statesContext;
 
   const handleOnChangeName = (event) => {
     const { value, maxLength } = event.target;
-    const valueMaxLength = value.slice(0, maxLength)
+    const valueMaxLength = value.slice(0, maxLength);
 
     return dispatchFormData({
       type: types.CARD_NAME,
@@ -34,7 +36,7 @@ function FormComponent() {
 
   const handleOnBlurName = (event) => {
     const { value } = event.target;
-    const cardNameValue = value
+    const cardNameValue = value;
     const containNumber = /[0-9]/g.test(cardNameValue);
 
     if (containNumber) {
@@ -93,11 +95,11 @@ function FormComponent() {
 
   const handleOnChangeNumber = (event) => {
     const { value, maxLength } = event.target;
-    const cardNumberValue = value.replace(/([^\d])+/gim, '')
+    const cardNumberValue = value.replace(/([^\d])+/gim, '');
     const formattedNumberValue = cardNumberValue
       .replace(/(\d{4})/g, '$1 ')
       .trim();
-    const valueMaxLength = formattedNumberValue.slice(0, maxLength)
+    const valueMaxLength = formattedNumberValue.slice(0, maxLength);
 
     return dispatchFormData({
       type: types.CARD_NUMBER,
@@ -150,13 +152,13 @@ function FormComponent() {
   const handleOnChangeMouth = (event) => {
     const { value, maxLength } = event.target;
     const formattedMouthValue = value.replace(/([^\d])+/gim, '').trim();
-    const valueMaxLength = formattedMouthValue.slice(0, maxLength)
+    const valueMaxLength = formattedMouthValue.slice(0, maxLength);
     const mouthValueInNumber = Number(valueMaxLength);
 
     if (mouthValueInNumber > 12) {
       return dispatchFormData({
         type: types.CARD_MOUTH,
-        payload: 12,
+        payload: '12',
       });
     }
 
@@ -230,7 +232,7 @@ function FormComponent() {
 
   const handleOnChangeYear = (event) => {
     const { value, maxLength } = event.target;
-    const valueMaxLength = value.slice(0, maxLength)
+    const valueMaxLength = value.slice(0, maxLength);
     const formattedYearValue = valueMaxLength.replace(/([^\d])+/gim, '').trim();
 
     return dispatchFormData({
@@ -310,7 +312,7 @@ function FormComponent() {
 
   const handleOnChangeCvc = (event) => {
     const { value, maxLength } = event.target;
-    const valueMaxLength = value.slice(0, maxLength)
+    const valueMaxLength = value.slice(0, maxLength);
     const formattedCvcValue = valueMaxLength.replace(/([^\d])+/gim, '').trim();
 
     return dispatchFormData({
@@ -363,13 +365,16 @@ function FormComponent() {
   useEffect(() => {
     console.log('useEffect', formValidationData);
     console.log('useEffect', formErrorMsg);
+    console.log('setState', isSubmitted);
   }, [formValidationData, formErrorMsg]);
 
   const HandleSubmit = (event) => {
     event.preventDefault();
 
+    setIsSubmitted((e) => !e);
     console.log('submit', formData);
     console.log('useEffect', formValidationData);
+    console.log('setState', isSubmitted);
   };
 
   const isAvailable = () => {
@@ -390,7 +395,8 @@ function FormComponent() {
           name="cardName"
           id="cardName"
           placeholder="e.g. Jane Appleseed"
-          maxLength="20"          value={formData.cardName}
+          maxLength="20"
+          value={formData.cardName}
           onChange={handleOnChangeName}
           onBlur={handleOnBlurName}
           className={
@@ -487,9 +493,13 @@ function FormComponent() {
         </CvcContainer>
       </DateCvcContainer>
 
-      <Button disabled={!isAvailable()} type="submit" onClick={HandleSubmit}>
+      <ButtonStyle
+        disabled={!isAvailable()}
+        type="submit"
+        onClick={HandleSubmit}
+      >
         Confirm
-      </Button>
+      </ButtonStyle>
     </FormSection>
   );
 }
