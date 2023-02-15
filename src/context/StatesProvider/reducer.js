@@ -17,6 +17,16 @@ export const formOnChangeReducer = (state, action) => {
     case types.CARD_CVC: {
       return { ...state, cardCvc: action.payload };
     }
+    case types.RESET_CARD: {
+      return {
+        ...state,
+        cardName: '',
+        cardNumber: '',
+        cardMouth: '',
+        cardYear: '',
+        cardCvc: '',
+      };
+    }
     default: {
       return { ...state };
     }
@@ -39,6 +49,16 @@ export const formOnBlurReducer = (state, action) => {
     }
     case types.CARD_CVC_SUCCESS: {
       return { ...state, cardCvcSuccess: action.payload };
+    }
+    case types.RESET_CARD_SUCCESS: {
+      return {
+        ...state,
+        cardNameSuccess: null,
+        cardNumberSuccess: null,
+        cardMouthSuccess: null,
+        cardYearSuccess: null,
+        cardCvcSuccess: null,
+      };
     }
     default: {
       return { ...state };

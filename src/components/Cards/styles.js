@@ -15,16 +15,16 @@ export const CardFrontContainer = styled.div`
     bottom: 0;
     left: 0;
     z-index: 2;
-    border-radius: 1rem;
-    padding: 1.5rem;
+    border-radius: ${theme.spacings.small};
+    padding: ${theme.spacings.medium};
     -webkit-box-shadow: 0px 7px 18px 2px rgba(0,0,0,0.53);
     box-shadow: 0px 7px 18px 2px rgba(0,0,0,0.53);
 
     @media ${theme.media.mediumQueries} {
       width: 33rem;
       height: 20rem;
-      left:2rem;
-      top:2rem;
+      left: ${theme.spacings.large};
+      top: ${theme.spacings.large};
       bottom: unset;
     }
   `};
@@ -38,16 +38,16 @@ export const CardFrontInfo = styled.div`
     > img {
       width: 25%;
       display: block;
-      margin-bottom: 4rem;
+      margin-bottom: ${theme.spacings.xhuge};
     }
 
     > h3 {
       text-align: left;
-      font-size: 2rem;
+      font-size: ${theme.spacings.large};
       word-spacing: .2rem;
       letter-spacing: .1rem;
       color: white;
-      margin-bottom: 2rem;
+      margin-bottom: ${theme.spacings.large};
     }
 
     > div {
@@ -67,10 +67,10 @@ export const CardFrontInfo = styled.div`
     }
 
       > h3 {
-        font-size: 2.5rem;
+        font-size: ${theme.spacings.xlarge};
         word-spacing: .1rem;
         letter-spacing: .1rem;
-        margin-bottom: 2.5rem;
+        margin-bottom: ${theme.spacings.xlarge};
       }
     }
 
@@ -91,22 +91,22 @@ export const CardBackContainer = styled.div`
     top: 0;
     right: 0;
     border-radius: 1rem;
-    padding: 1.5rem;
+    padding: ${theme.spacings.medium};
     -webkit-box-shadow: 0px 7px 18px 2px rgba(0,0,0,0.53);
     box-shadow: 0px 7px 18px 2px rgba(0,0,0,0.53);
 
     @media ${theme.media.mediumQueries} {
       width: 33rem;
       height: 20rem;
-      right: 2rem;
-      bottom:2rem;
+      right: ${theme.spacings.large};
+      bottom: ${theme.spacings.large};
       top: unset;
     }
   `};
 `;
 
 export const CardBackInfo = styled.div`
-  ${() => css`
+  ${({ theme }) => css`
     width: 100%;
     height: 100%;
     display: flex;
@@ -114,10 +114,10 @@ export const CardBackInfo = styled.div`
     justify-content: flex-end;
 
     > span {
-      padding-right: 1.5rem;
+      padding-right: ${theme.spacings.medium};
       padding-bottom: 0.4rem;
       color: white;
-      font-size: 1.5rem;
+      font-size: ${theme.spacings.medium};
 
     }
   `};

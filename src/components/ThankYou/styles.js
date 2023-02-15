@@ -1,22 +1,21 @@
 import styled, { css } from 'styled-components';
 
 export const ThanksContainer = styled.div`
-  ${() => css`
+  ${({ theme }) => css`
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    border: 1px solid green;
-    gap: 3rem;
+    gap: ${theme.spacings.xxlarge};
+
+    > h3 {
+      letter-spacing: ${theme.font.sizes.small};
+      text-transform: uppercase;
+    } 
+
+    > p {
+      color: ${theme.colors.mediumViolet};
+    }
   `};
-
-  > h3 {
-    display: block;
-  }
-
-  > p {
-    display: block;
-  }
-
 `;

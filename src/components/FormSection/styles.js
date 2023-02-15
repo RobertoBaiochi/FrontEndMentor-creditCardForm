@@ -7,12 +7,7 @@ export const FormContainer = styled.section`
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    border: 1px solid red;
     margin: ${theme.spacings.medium} auto;
-    padding: 2rem;
-
-    @media ${theme.media.mediumQueries} {
-      padding: 2rem;
-    }
+    padding: ${theme.spacings.large};
   `};
 `;

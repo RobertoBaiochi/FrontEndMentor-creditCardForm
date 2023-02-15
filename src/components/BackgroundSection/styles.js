@@ -9,7 +9,7 @@ export const MainContainer = styled.main`
     background-image: url(${bgMobile});
     background-position: top;
     background-repeat: no-repeat;
-    background-size: 100% 35%;
+    background-size: 100% 33%;
     background-color: ${theme.colors.white};
     display: flex;
     align-items: center;
@@ -18,7 +18,7 @@ export const MainContainer = styled.main`
     @media ${theme.media.mediumQueries} {
       background-image: url(${bgDesktop});
       background-position: left;
-      background-size: 35% 100%;
+      background-size: 33% 100%;
     }
   `};
 `;

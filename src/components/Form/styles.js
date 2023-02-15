@@ -58,13 +58,13 @@ export const FormContainer = styled.div`
       border: 3px solid ${theme.colors.lightViolet};
       border-radius: ${theme.spacings.xsmall};
       font-family: ${theme.font.family.default};
-      font-size: 2rem;
+      font-size: ${theme.font.sizes.large};
       text-transform: capitalize;
-      margin-bottom: 1.5rem;
+      margin-bottom: ${theme.spacings.large};
 
 
       &:focus {
-        padding: .5rem;
+        padding: ${theme.spacings.xsmall};
         border: double 3px transparent;
         border-radius: 6px;
         background-image: linear-gradient( white, white),
@@ -79,7 +79,7 @@ export const FormContainer = styled.div`
 
       &::placeholder {
         font-family: ${theme.font.family.default};
-        font-size: 1.8rem;
+        font-size: ${theme.font.sizes.medium};
         font-weight: bold;
         color: ${theme.colors.lightViolet};
       }
@@ -107,9 +107,9 @@ export const ErrorMsg = styled.small`
 `;
 
 export const DateCvcContainer = styled.div`
-  ${() => css`
+  ${({ theme }) => css`
     display: flex;
-    gap: 1rem;
+    gap: ${theme.spacings.small};
   `};
 `;
 
@@ -119,8 +119,12 @@ export const DateContainer = styled(FormContainer)`
 
     > input {
       display: inline;
-      width: 43%;
+      width: 40%;
       margin-right: ${theme.spacings.small};
+
+      @media ${theme.media.smallQueries} {
+        width: 43%;
+      }
     }
 
   `};
