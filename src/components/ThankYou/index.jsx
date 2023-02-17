@@ -27,7 +27,7 @@ function ThankYou() {
       <img src={imgOk} alt="" />
 
       <h3>THANK YOU!</h3>
-      <p>We&apos;ve added your card details</p>
+      <p>We&apos;ve added your card details.</p>
       <ButtonStyle onClick={handleContinue}>Continue</ButtonStyle>
 
     </ThanksContainer>
