@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1676668682029" clover="3.2.0">
+  <project timestamp="1676668682029" name="All files">
+    <metrics statements="79" coveredstatements="57" conditionals="29" coveredconditionals="5" methods="17" coveredmethods="14" elements="125" coveredelements="76" complexity="0" loc="79" ncloc="79" packages="7" files="16" classes="16"/>
+    <package name=".jest.mocks">
+      <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <file name="fileMock.js" path="C:\Users\bigat\Desktop\Estudos\frontEndMentor\interactive-card\.jest\mocks\fileMock.js">
+        <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="3" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.components.BackgroundSection">
+      <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
+      <file name="index.jsx" path="C:\Users\bigat\Desktop\Estudos\frontEndMentor\interactive-card\src\components\BackgroundSection\index.jsx">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="5" count="1" type="stmt"/>
+        <line num="14" count="1" type="stmt"/>
+      </file>
+      <file name="styles.js" path="C:\Users\bigat\Desktop\Estudos\frontEndMentor\interactive-card\src\components\BackgroundSection\styles.js">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="5" count="1" type="stmt"/>
+        <line num="6" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.components.Cards">
+      <metrics statements="11" coveredstatements="11" conditionals="10" coveredconditionals="5" methods="5" coveredmethods="5"/>
+      <file name="index.jsx" path="C:\Users\bigat\Desktop\Estudos\frontEndMentor\interactive-card\src\components\Cards\index.jsx">
+        <metrics statements="3" coveredstatements="3" conditionals="10" coveredconditionals="5" methods="1" coveredmethods="1"/>
+        <line num="8" count="5" type="stmt"/>
+        <line num="9" count="5" type="stmt"/>
+        <line num="10" count="5" type="stmt"/>
+      </file>
+      <file name="styles.js" path="C:\Users\bigat\Desktop\Estudos\frontEndMentor\interactive-card\src\components\Cards\styles.js">
+        <metrics statements="8" coveredstatements="8" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="4"/>
+        <line num="6" count="2" type="stmt"/>
+        <line num="7" count="5" type="stmt"/>
+        <line num="33" count="2" type="stmt"/>
+        <line num="34" count="5" type="stmt"/>
+        <line num="82" count="2" type="stmt"/>
+        <line num="83" count="5" type="stmt"/>
+        <line num="108" count="2" type="stmt"/>
+        <line num="109" count="5" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.components.CardsSection">
+      <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
+      <file name="index.jsx" path="C:\Users\bigat\Desktop\Estudos\frontEndMentor\interactive-card\src\components\CardsSection\index.jsx">
+        <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="5" count="2" type="stmt"/>
+      </file>
+      <file name="styles.js" path="C:\Users\bigat\Desktop\Estudos\frontEndMentor\interactive-card\src\components\CardsSection\styles.js">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="4" count="2" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.components.SectionContainer">
+      <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
+      <file name="index.jsx" path="C:\Users\bigat\Desktop\Estudos\frontEndMentor\interactive-card\src\components\SectionContainer\index.jsx">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="5" count="1" type="stmt"/>
+        <line num="14" count="1" type="stmt"/>
+      </file>
+      <file name="styles.js" path="C:\Users\bigat\Desktop\Estudos\frontEndMentor\interactive-card\src\components\SectionContainer\styles.js">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="4" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.context.StatesProvider">
+      <metrics statements="53" coveredstatements="31" conditionals="19" coveredconditionals="0" methods="5" coveredmethods="2"/>
+      <file name="context.js" path="C:\Users\bigat\Desktop\Estudos\frontEndMentor\interactive-card\src\context\StatesProvider\context.js">
+        <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="3" count="2" type="stmt"/>
+      </file>
+      <file name="data.js" path="C:\Users\bigat\Desktop\Estudos\frontEndMentor\interactive-card\src\context\StatesProvider\data.js">
+        <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="2" type="stmt"/>
+        <line num="9" count="2" type="stmt"/>
+        <line num="17" count="2" type="stmt"/>
+      </file>
+      <file name="index.jsx" path="C:\Users\bigat\Desktop\Estudos\frontEndMentor\interactive-card\src\context\StatesProvider\index.jsx">
+        <metrics statements="8" coveredstatements="8" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
+        <line num="16" count="5" type="stmt"/>
+        <line num="20" count="5" type="stmt"/>
+        <line num="24" count="5" type="stmt"/>
+        <line num="29" count="5" type="stmt"/>
+        <line num="31" count="5" type="stmt"/>
+        <line num="32" count="5" type="stmt"/>
+        <line num="53" count="5" type="stmt"/>
+        <line num="60" count="2" type="stmt"/>
+      </file>
+      <file name="reducer.js" path="C:\Users\bigat\Desktop\Estudos\frontEndMentor\interactive-card\src\context\StatesProvider\reducer.js">
+        <metrics statements="25" coveredstatements="3" conditionals="19" coveredconditionals="0" methods="3" coveredmethods="0"/>
+        <line num="3" count="2" type="stmt"/>
+        <line num="4" count="0" type="cond" truecount="0" falsecount="7"/>
+        <line num="6" count="0" type="stmt"/>
+        <line num="9" count="0" type="stmt"/>
+        <line num="12" count="0" type="stmt"/>
+        <line num="15" count="0" type="stmt"/>
+        <line num="18" count="0" type="stmt"/>
+        <line num="21" count="0" type="stmt"/>
+        <line num="31" count="0" type="stmt"/>
+        <line num="36" count="2" type="stmt"/>
+        <line num="37" count="0" type="cond" truecount="0" falsecount="7"/>
+        <line num="39" count="0" type="stmt"/>
+        <line num="42" count="0" type="stmt"/>
+        <line num="45" count="0" type="stmt"/>
+        <line num="48" count="0" type="stmt"/>
+        <line num="51" count="0" type="stmt"/>
+        <line num="54" count="0" type="stmt"/>
+        <line num="64" count="0" type="stmt"/>
+        <line num="69" count="2" type="stmt"/>
+        <line num="70" count="0" type="cond" truecount="0" falsecount="5"/>
+        <line num="72" count="0" type="stmt"/>
+        <line num="75" count="0" type="stmt"/>
+        <line num="78" count="0" type="stmt"/>
+        <line num="81" count="0" type="stmt"/>
+        <line num="84" count="0" type="stmt"/>
+      </file>
+      <file name="types.js" path="C:\Users\bigat\Desktop\Estudos\frontEndMentor\interactive-card\src\context\StatesProvider\types.js">
+        <metrics statements="16" coveredstatements="16" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="2" type="stmt"/>
+        <line num="2" count="2" type="stmt"/>
+        <line num="3" count="2" type="stmt"/>
+        <line num="4" count="2" type="stmt"/>
+        <line num="5" count="2" type="stmt"/>
+        <line num="6" count="2" type="stmt"/>
+        <line num="8" count="2" type="stmt"/>
+        <line num="9" count="2" type="stmt"/>
+        <line num="10" count="2" type="stmt"/>
+        <line num="11" count="2" type="stmt"/>
+        <line num="12" count="2" type="stmt"/>
+        <line num="13" count="2" type="stmt"/>
+        <line num="15" count="2" type="stmt"/>
+        <line num="16" count="2" type="stmt"/>
+        <line num="17" count="2" type="stmt"/>
+        <line num="18" count="2" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.styles">
+      <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+      <file name="render-theme.js" path="C:\Users\bigat\Desktop\Estudos\frontEndMentor\interactive-card\src\styles\render-theme.js">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="5" count="4" type="stmt"/>
+        <line num="6" count="7" type="stmt"/>
+      </file>
+      <file name="theme.js" path="C:\Users\bigat\Desktop\Estudos\frontEndMentor\interactive-card\src\styles\theme.js">
+        <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="4" type="stmt"/>
+      </file>
+    </package>
+  </project>
+</coverage>

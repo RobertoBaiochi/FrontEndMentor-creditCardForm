@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<BackgroundSection /> should render  1`] = `
+<main
+  class="sc-bcXHqe fLLlqW"
+>
+  <h1>
+    Children
+  </h1>
+</main>
+`;

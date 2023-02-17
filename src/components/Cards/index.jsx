@@ -11,7 +11,7 @@ function Cards() {
     <>
       <CardFrontContainer>
         <CardFrontInfo>
-          <img src={logoCard} alt="" />
+          <img src={logoCard} alt="logo card" />
           <h3>{formData.cardNumber.length === 0 ? "0000 0000 0000 0000" : formData.cardNumber}</h3>
 
           <div>

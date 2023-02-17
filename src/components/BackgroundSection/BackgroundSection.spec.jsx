@@ -1,16 +1,15 @@
 import { screen } from '@testing-library/react';
 import { renderTheme } from '../../styles/render-theme';
 import BackgroundSection from '.';
-import SectionContainer from '../SectionContainer';
 
 describe('<BackgroundSection />', () => {
   it('should render ', () => {
-    renderTheme(
+    const { container } = renderTheme(
     <BackgroundSection>
-      <SectionContainer>
-        <h1>Teste</h1>
-      </SectionContainer>
+        <h1>Children</h1>
     </BackgroundSection>);
-    expect(screen.getByRole('heading')).toBeInTheDocument();
+
+    expect(screen.getByRole('heading', { name: 'Children' })).toBeInTheDocument();
+    expect(container.firstChild).toMatchSnapshot();
   });
 });

@@ -1,0 +1,50 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<CardSection /> should match with snapshot 1`] = `
+<div
+  class="sc-eDvSVe kpJyVF"
+>
+  <div
+    class="sc-bcXHqe guRJBx"
+  >
+    <div
+      class="sc-gswNZR hrrrGy"
+    >
+      <img
+        alt="logo card"
+        src="test-file-stub"
+      />
+      <h3>
+        0000 0000 0000 0000
+      </h3>
+      <div>
+        <span>
+          Jane Appleseed
+        </span>
+        <div>
+          <span>
+            00
+          </span>
+          <span>
+            /
+          </span>
+          <span>
+            00
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    class="sc-dkrFOg ccaeNv"
+  >
+    <div
+      class="sc-hLBbgP kgSPxc"
+    >
+      <span>
+        000
+      </span>
+    </div>
+  </div>
+</div>
+`;

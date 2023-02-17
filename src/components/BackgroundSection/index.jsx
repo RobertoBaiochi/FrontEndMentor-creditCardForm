@@ -1,12 +1,10 @@
 import P from 'prop-types';
 import { MainContainer } from './styles';
-import SectionContainer from '../SectionContainer';
-
 
 function BackgroundSection({ children }) {
   return (
     <MainContainer>
-      <SectionContainer>{children}</SectionContainer>
+      {children}
     </MainContainer>
   );
 }
